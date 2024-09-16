@@ -42,7 +42,7 @@ const emit = defineEmits(['cardsSelected']);
     height: 100vh;
     display: flex;
     justify-content: center;
-    align-items: center;
+    padding-top: 4rem;
     overflow: hidden;
     perspective: 1000px;
 }
