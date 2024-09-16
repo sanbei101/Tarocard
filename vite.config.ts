@@ -29,11 +29,11 @@ export default defineConfig({
       external: ["fsevents"],
     },
 
-    minify: "terser", // 确保 Vite 使用 terser 进行代码压缩
+    minify: "terser",
     terserOptions: {
       compress: {
-        drop_console: true, // 去掉所有的 console.log 调用
-        drop_debugger: true, // 去掉所有的 debugger 语句
+        drop_console: true,
+        drop_debugger: true,
       },
     },
   },
