@@ -4,10 +4,10 @@ import { NGradientText, NConfigProvider, NGlobalStyle, darkTheme, NInput, NButto
 import OpenAI from 'openai';
 import Card from './components/card.vue';
 import { GetTaroCardByid, TaroCard } from './util.ts'
-
+const apikey: string = import.meta.env.VITE_API_SECRET;
 const openai = new OpenAI({
   baseURL: 'https://api.deepseek.com',
-  apiKey: 'sk-e81ac3b4aba54fdf87847476d5298752',
+  apiKey: apikey,
   dangerouslyAllowBrowser: true
 });
 
