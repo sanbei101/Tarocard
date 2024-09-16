@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref } from 'vue';
-import { NFlex, NGradientText, NConfigProvider, NGlobalStyle, darkTheme, NSelect, NInput, NButton, NP } from 'naive-ui';
+import { NFlex, NGradientText, NConfigProvider, NGlobalStyle, darkTheme, NSelect, NInput, NButton, NP, } from 'naive-ui';
 import OpenAI from 'openai';
 import Card from './components/card.vue';
 const options = [
@@ -46,11 +46,19 @@ const getAIResponse = async () => {
       }
     }
   } catch (error) {
-    console.error('Error fetching response from DeepSeek:', error);
+    console.error('Error fetching response from DeepSeek:' + error);
   } finally {
     loading.value = false;
   }
 }
+
+const selectedCards = ref<number[]>([]);
+
+const handleCardsSelected = (selected: number[]) => {
+  selectedCards.value = selected;
+  console.log('选中的三张牌是', selected);
+};
+
 </script>
 
 <template>
@@ -68,12 +76,13 @@ const getAIResponse = async () => {
         提交问题
       </n-button>
 
-      <Card />
+      <Card @cardsSelected="handleCardsSelected" />
 
       <n-p v-if="answer" class="answer">
         {{ answer }}
       </n-p>
     </n-flex>
+
   </n-config-provider>
 </template>
 

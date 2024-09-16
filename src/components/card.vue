@@ -12,14 +12,18 @@ const toggleCard = (index: number) => {
         SelectedCard.value = SelectedCard.value.filter(i => i !== index);
     } else if (canSelectMore.value) {
         SelectedCard.value.push(index);
+        if (SelectedCard.value.length === 3) {
+            emit('cardsSelected', SelectedCard.value);
+        }
     }
 };
+const emit = defineEmits(['cardsSelected']);
 </script>
 
 <template>
-    <div class="card-container">
+    <div class="card-container" tabindex="0">
         <div v-for="i in 9" :key="i" class="card" :class="{ 'selected': isCardSelected(i) }" :style="{ '--i': i - 5 }"
-            @click="toggleCard(i)">
+            @click="toggleCard(i)" tabindex="0">
             {{ i }}
         </div>
     </div>
@@ -53,7 +57,8 @@ const toggleCard = (index: number) => {
     transform-origin: 50% 100%;
 }
 
-.card-container:hover .card:not(.selected) {
+.card-container:hover .card:not(.selected),
+.card-container:focus-within .card:not(.selected) {
     transform: rotate(calc(var(--i)*5deg)) translate(calc(var(--i)*120px));
     color: rgba(0, 0, 0, 0.25);
 }
