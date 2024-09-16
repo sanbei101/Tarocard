@@ -1,14 +1,8 @@
 <script setup lang="ts">
 import { ref } from 'vue';
-import { NFlex, NGradientText, NConfigProvider, NGlobalStyle, darkTheme, NSelect, NInput, NButton, NP, } from 'naive-ui';
+import { NFlex, NGradientText, NConfigProvider, NGlobalStyle, darkTheme, NInput, NButton, NP, } from 'naive-ui';
 import OpenAI from 'openai';
 import Card from './components/card.vue';
-const options = [
-  { label: '单张牌占卜', value: 1 },
-  { label: '三张牌占卜', value: 3 }
-];
-
-const myoption = ref<number>();
 const myinput = ref<string>();
 const answer = ref<string>('');
 const loading = ref<boolean>(false);
@@ -16,10 +10,7 @@ const loading = ref<boolean>(false);
 const openai = new OpenAI({
   baseURL: 'https://api.deepseek.com',
   apiKey: 'sk-e81ac3b4aba54fdf87847476d5298752',
-
-  //开发环境允许直接使用密钥
   dangerouslyAllowBrowser: true
-
 });
 
 const getAIResponse = async () => {
@@ -69,7 +60,6 @@ const handleCardsSelected = (selected: number[]) => {
         是否塔罗牌
       </n-gradient-text>
 
-      <n-select v-model:value="myoption" placeholder="请选择" :options="options" />
       <n-input v-model:value="myinput" placeholder="请输入一个可以用 是 或者 不是 回答的问题" />
 
       <n-button :loading="loading" type="primary" @click="getAIResponse">
