@@ -73,7 +73,7 @@ const getAIResponse = async () => {
         是否塔罗牌
       </n-gradient-text>
 
-      <n-input v-model:value="myinput" placeholder="请输入一个可以用 是 或者 不是 回答的问题" />
+      <n-input v-model:value="myinput" placeholder="请输入一个可以用 是 或者 不是 回答的问题" style="max-width: 60%;" />
 
       <n-button :loading="loading" type="primary" @click="() => { ShowCard = true; }">
         提交问题
@@ -81,7 +81,8 @@ const getAIResponse = async () => {
 
       <Card @cardsSelected="handleCardsSelected" v-show="ShowCard" />
 
-      <n-modal v-model:show="showModal" preset="card" title="塔罗师说:" size="huge" style="max-width: 60%;">
+      <n-modal v-model:show="showModal" preset="card" title="塔罗师说:" size="huge" style="max-width: 60%;"
+        :on-after-leave="() => loading = false">
         <p class="taroAnswer" style="text-indent: 2em;font-weight:400; "> {{ answer }}</p>
         <template #header-extra>
           继续出发吧!
@@ -96,7 +97,7 @@ const getAIResponse = async () => {
 <style scoped>
 .container {
   margin: 1rem auto;
-  max-width: 96%;
+  max-width: 90%;
   height: 100vh;
   align-items: center;
 }
