@@ -1,0 +1,23 @@
+{
+  "name": "vite-vue-typescript-starter",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "start": "vite --host",
+    "build": "vue-tsc && vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "openai": "^4.61.0",
+    "vue": "^3.4.15"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^5.0.3",
+    "naive-ui": "^2.39.0",
+    "typescript": "^5.2.2",
+    "vite": "^5.0.12",
+    "vite-plugin-vue-devtools": "^7.2.1",
+    "vue-tsc": "^2.0.21"
+  }
+}
