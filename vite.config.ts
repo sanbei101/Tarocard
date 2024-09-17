@@ -8,7 +8,7 @@ export default defineConfig({
     vue(),
     vueDevTools(),
     viteCompression({
-      verbose: true, // 输出压缩结果
+      verbose: true,
       disable: false,
       threshold: 10240,
       algorithm: "gzip",
