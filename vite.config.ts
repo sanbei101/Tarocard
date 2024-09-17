@@ -9,7 +9,7 @@ export default defineConfig({
     vueDevTools(),
     viteCompression({
       verbose: true, // 输出压缩结果
-      disable: false, // 是否禁用插件
+      disable: false,
       threshold: 10240,
       algorithm: "gzip",
       ext: ".gz",
