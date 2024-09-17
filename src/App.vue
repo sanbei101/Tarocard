@@ -3,7 +3,7 @@ import { ref } from 'vue';
 import { NGradientText, NConfigProvider, NGlobalStyle, darkTheme, NInput, NButton, NModal } from 'naive-ui';
 import OpenAI from 'openai';
 import Card from './components/card.vue';
-import { GetTaroCardByid, TaroCard } from './util.ts'
+import { GetTaroCardByid, TaroCard, SystemPrompt } from './util.ts'
 const apikey: string = import.meta.env.VITE_API_SECRET;
 const openai = new OpenAI({
   baseURL: 'https://api.deepseek.com',
@@ -11,7 +11,7 @@ const openai = new OpenAI({
   dangerouslyAllowBrowser: true
 });
 
-const MyInput = ref<string>();
+const MyInput = ref<string>('');
 const answer = ref<string>('');
 const loading = ref<boolean>(false);
 const ShowCard = ref<boolean>(false);
@@ -27,17 +27,11 @@ const getAIResponse = async () => {
   if (!MyInput.value) {
     return;
   }
-  ShowCard.value = true;
-
   loading.value = true;
   answer.value = '';
-
   showModal.value = true;
-  const SystemPrompt: string = `你是一个顶级的塔罗牌预测大师,现在一个用户重金聘请你为他解答人生中的一个问题,于是你让他抽取了三张塔罗牌,请你根据这三张牌的寓意,给出一个能或者不能的预测,注意你的语气必须符合一名塔罗牌预测大师的口吻,且必须给出能或者不能的答案,不能模棱两可`;
   const FirstCardPrompt: string = `我抽到的第一张塔罗牌是${selectedCards.value[0].name},他的寓意是${selectedCards.value[0].mean};`;
-
   const SecondCardPrompt: string = `我抽到的第二张塔罗牌是${selectedCards.value[1].name},他的寓意是${selectedCards.value[1].mean};`;
-
   const ThirdCardPrompt: string = `我抽到的第三张塔罗牌是${selectedCards.value[2].name},他的寓意是${selectedCards.value[2].mean};`;
   const AllPrompt: string = `${FirstCardPrompt}${SecondCardPrompt}${ThirdCardPrompt},问题是:${MyInput.value}`;
   try {
@@ -56,7 +50,7 @@ const getAIResponse = async () => {
       }
     }
   } catch (error) {
-    console.error('Error fetching response from DeepSeek:' + error);
+    console.error('获取AI回答失败' + error);
   } finally {
     loading.value = false;
   }
@@ -70,10 +64,10 @@ const getAIResponse = async () => {
     <n-global-style />
     <div class="container">
       <n-gradient-text type="info" :size="32" style="font-weight: bolder;">
-        是否塔罗牌
+        CAU塔罗牌魔法屋
       </n-gradient-text>
 
-      <n-input v-model:value="MyInput" placeholder="请输入一个可以用 是 或者 不是 回答的问题" style="max-width: 60%;" />
+      <n-input v-model:value="MyInput" placeholder="接受指引吧" style="max-width: 60%;" />
 
       <n-button :loading="loading" type="primary" @click="() => { ShowCard = true; }">
         提交问题
@@ -83,7 +77,7 @@ const getAIResponse = async () => {
     </div>
 
     <n-modal v-model:show="showModal" preset="card" title="塔罗师说:" size="huge" style="max-width: 60%;"
-      :on-after-leave="() => loading = false">
+      :on-after-leave="() => { loading = false; }">
       <p class="taroAnswer" style="text-indent: 2em;font-weight:400; "> {{ answer }}</p>
       <template #header-extra>
         继续出发吧!
