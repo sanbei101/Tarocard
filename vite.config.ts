@@ -12,7 +12,7 @@ export default defineConfig({
       disable: false, // 是否禁用插件
       threshold: 10240, // 只有大于该值的资源会被压缩，单位是字节
       algorithm: "gzip", // 压缩算法
-      ext: ".gz", // 生成的压缩文件的后缀
+      ext: ".gz",
     }),
   ],
   build: {
