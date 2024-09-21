@@ -23,6 +23,8 @@ const handleCardsSelected = (selected: number[]) => {
   getAIResponse();
 };
 
+const abortController = ref<AbortController | null>(null);
+
 const getAIResponse = async () => {
   if (!MyInput.value) {
     return;
@@ -34,6 +36,9 @@ const getAIResponse = async () => {
   const SecondCardPrompt: string = `我抽到的第二张塔罗牌是${selectedCards.value[1].name},他的寓意是${selectedCards.value[1].mean};`;
   const ThirdCardPrompt: string = `我抽到的第三张塔罗牌是${selectedCards.value[2].name},他的寓意是${selectedCards.value[2].mean};`;
   const AllPrompt: string = `${FirstCardPrompt}${SecondCardPrompt}${ThirdCardPrompt},问题是:${MyInput.value}`;
+
+  abortController.value = new AbortController();
+
   try {
     const stream = await openai.chat.completions.create({
       model: 'deepseek-chat',
@@ -42,7 +47,7 @@ const getAIResponse = async () => {
         { role: 'user', content: AllPrompt }
       ],
       stream: true
-    });
+    }, { signal: abortController.value.signal });
 
     for await (const chunk of stream) {
       if (chunk.choices[0]?.delta?.content) {
@@ -50,13 +55,20 @@ const getAIResponse = async () => {
       }
     }
   } catch (error) {
-    console.error('获取AI回答失败' + error);
-  } finally {
+    console.error('获取AI传输流失败:', error);
+  }
+  finally {
     loading.value = false;
+    abortController.value = null;
   }
 }
 
-
+const handleModalClose = () => {
+  if (abortController.value) {
+    abortController.value.abort();
+  }
+  loading.value = false;
+}
 </script>
 
 <template>
@@ -76,8 +88,8 @@ const getAIResponse = async () => {
       <Card @cardsSelected="handleCardsSelected" v-show="ShowCard" />
     </div>
 
-    <n-modal v-model:show="showModal" preset="card" title="塔罗师说:" size="huge" style="max-width: 60%;"
-      :on-after-leave="() => { loading = false; }">
+    <n-modal v-model:show="showModal" preset="card" title="塔罗师说:" size="huge" :on-after-leave=handleModalClose
+      class="answer-model">
       <p class="taroAnswer" style="text-indent: 2em;font-weight:400; "> {{ answer }}</p>
       <template #header-extra>
         继续出发吧!
@@ -91,10 +103,21 @@ const getAIResponse = async () => {
 .container {
   margin: 1rem auto;
   max-width: 90%;
-  height: 100vh;
   align-items: center;
   display: flex;
   flex-direction: column;
   gap: 1rem;
+}
+</style>
+
+<style>
+.answer-model {
+  max-width: 60% !important;
+}
+
+@media(max-width: 768px) {
+  .answer-model {
+    max-width: 90% !important;
+  }
 }
 </style>
