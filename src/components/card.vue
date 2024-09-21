@@ -36,6 +36,17 @@ const emit = defineEmits(['cardsSelected']);
 
 
 <style scoped>
+
+.card:nth-child(1) .card-front, .card:nth-child(1) .card-back { background-color: #FF6B6B; }
+.card:nth-child(2) .card-front, .card:nth-child(2) .card-back { background-color: #4ECDC4; }
+.card:nth-child(3) .card-front, .card:nth-child(3) .card-back { background-color: #45B7D1; }
+.card:nth-child(4) .card-front, .card:nth-child(4) .card-back { background-color: #FFA07A; }
+.card:nth-child(5) .card-front, .card:nth-child(5) .card-back { background-color: #98D8C8; }
+.card:nth-child(6) .card-front, .card:nth-child(6) .card-back { background-color: #F7DC6F; }
+.card:nth-child(7) .card-front, .card:nth-child(7) .card-back { background-color: #BB8FCE; }
+.card:nth-child(8) .card-front, .card:nth-child(8) .card-back { background-color: #82E0AA; }
+.card:nth-child(9) .card-front, .card:nth-child(9) .card-back { background-color: #F1948A; }
+
 .card-container {
     position: relative;
     width: 100%;
@@ -75,12 +86,10 @@ const emit = defineEmits(['cardsSelected']);
 }
 
 .card-front {
-    background: plum;
     color: rgba(0, 0, 0, 0.2);
 }
 
 .card-back {
-    background: lightpink;
     color: rgba(0, 0, 0, 0.8);
     transform: rotateY(180deg);
 }
@@ -93,5 +102,44 @@ const emit = defineEmits(['cardsSelected']);
 .card.selected {
     transform: translateY(-50px) rotate(calc(var(--i)*5deg)) translate(calc(var(--i)*120px)) rotateY(180deg);
     z-index: 100;
+}
+
+
+@media (max-width: 768px) {
+    .card-container {
+        flex-direction: column;
+        align-items: center;
+        padding-top: 2rem;
+        height: auto;
+    }
+
+    .card {
+        position: relative;
+        width: 70vw;
+        height: 40vw;
+        transition: transform 0.5s, margin-bottom 0.5s;
+        margin-bottom: -80px;
+    }
+
+    .card-front,
+    .card-back {
+        font-size: 10vw;
+    }
+
+    .card-container:hover .card:not(.selected),
+    .card-container:focus-within .card:not(.selected) {
+        transform: none;
+    }
+
+    .card-container:hover .card,
+    .card-container:focus-within .card {
+        margin-bottom: -50px;
+    }
+
+    .card.selected {
+        transform: translateY(-20px) rotateY(180deg);
+        z-index: 100;
+        margin-bottom: 0;
+    }
 }
 </style>
