@@ -15,7 +15,7 @@
   "devDependencies": {
     "@vitejs/plugin-vue": "^5.1.4",
     "naive-ui": "^2.40.0",
-    "terser": "^5.32.0",
+    "terser": "^5.33.0",
     "typescript": "^5.2.2",
     "vite": "^5.4.6",
     "vite-plugin-compression": "^0.5.1",
