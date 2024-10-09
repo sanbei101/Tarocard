@@ -9,8 +9,8 @@ importers:
   .:
     dependencies:
       openai:
-        specifier: ^4.64.0
-        version: 4.64.0
+        specifier: ^4.67.3
+        version: 4.67.3
       vue:
         specifier: ^3.5.8
         version: 3.5.8(typescript@5.6.2)
@@ -940,8 +940,8 @@ packages:
     resolution: {integrity: sha512-mnkeQ1qP5Ue2wd+aivTD3NHd/lZ96Lu0jgf0pwktLPtx6cTZiH7tyeGRRHs0zX0rbrahXPnXlUnbeXyaBBuIaw==}
     engines: {node: '>=18'}
 
-  openai@4.64.0:
-    resolution: {integrity: sha512-+o4vDKn2xzNMeR71rFMCPLr2penpwoALgRoJyIboIBOlkKjw+SoRiBOlO9ss1diXM4Elv01L/iliyr2oqY/l+A==}
+  openai@4.67.3:
+    resolution: {integrity: sha512-HT2tZgjLgRqbLQNKmYtjdF/4TQuiBvg1oGvTDhwpSEQzxo6/oM1us8VQ53vBK2BiKvCxFuq6gKGG70qfwrNhKg==}
     hasBin: true
     peerDependencies:
       zod: ^3.23.8
@@ -2092,7 +2092,7 @@ snapshots:
       is-inside-container: 1.0.0
       is-wsl: 3.1.0
 
-  openai@4.64.0:
+  openai@4.67.3:
     dependencies:
       '@types/node': 18.19.50
       '@types/node-fetch': 2.6.11
