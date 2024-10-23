@@ -17,7 +17,7 @@
     "naive-ui": "^2.40.1",
     "terser": "^5.34.1",
     "typescript": "^5.2.2",
-    "vite": "^5.4.8",
+    "vite": "^5.4.10",
     "vite-plugin-compression": "^0.5.1",
     "vite-plugin-vue-devtools": "^7.4.6",
     "vue-tsc": "^2.0.21"
