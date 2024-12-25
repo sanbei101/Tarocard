@@ -17,7 +17,9 @@ const toggleCard = (index: number) => {
     }
   }
 };
-const emit = defineEmits(['cardsSelected']);
+const emit = defineEmits<{
+  (event: 'cardsSelected', selectedCards: number[]): void;
+}>();
 </script>
 
 <template>
