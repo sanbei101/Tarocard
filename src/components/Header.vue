@@ -3,7 +3,9 @@
     <!-- Logo Section -->
     <div class="flex items-center space-x-2">
       <img src="../assets/head.svg" alt="Logo" class="h-5 w-5" />
-      <span class="text-sm font-bold text-black">塔罗耳语</span>
+      <span class="animate-bounce bg-gradient-to-r from-purple-300 via-pink-300 to-red-300 bg-clip-text text-lg font-bold text-transparent"
+        >塔罗耳语</span
+      >
     </div>
 
     <!-- Navigation Links -->

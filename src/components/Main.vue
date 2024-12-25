@@ -17,7 +17,7 @@
 <style scoped>
 .animate-gradient {
   background-size: 200%;
-  animation: gradient 8s linear infinite;
+  animation: gradient 2s linear infinite;
 }
 
 @keyframes gradient {
