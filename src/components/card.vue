@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { ref, computed } from "vue";
-import { GetTaroNameByid } from "../util";
+import { ref, computed } from 'vue';
+import { GetTaroNameByid } from '../util';
 const SelectedCard = ref<number[]>([]);
 
 const isCardSelected = (index: number) => SelectedCard.value.includes(index);
@@ -13,11 +13,11 @@ const toggleCard = (index: number) => {
   } else if (canSelectMore.value) {
     SelectedCard.value.push(index);
     if (SelectedCard.value.length === 3) {
-      emit("cardsSelected", SelectedCard.value);
+      emit('cardsSelected', SelectedCard.value);
     }
   }
 };
-const emit = defineEmits(["cardsSelected"]);
+const emit = defineEmits(['cardsSelected']);
 </script>
 
 <template>
@@ -29,8 +29,7 @@ const emit = defineEmits(["cardsSelected"]);
       :class="{ selected: isCardSelected(i) }"
       :style="{ '--i': i - 5 }"
       @click="toggleCard(i)"
-      tabindex="0"
-    >
+      tabindex="0">
       <div class="card-front">
         {{ i }}
       </div>
@@ -132,8 +131,7 @@ const emit = defineEmits(["cardsSelected"]);
 }
 
 .card.selected {
-  transform: translateY(-50px) rotate(calc(var(--i) * 5deg))
-    translate(calc(var(--i) * 120px)) rotateY(180deg);
+  transform: translateY(-50px) rotate(calc(var(--i) * 5deg)) translate(calc(var(--i) * 120px)) rotateY(180deg);
   z-index: 100;
 }
 

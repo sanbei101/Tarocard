@@ -1,28 +1,20 @@
 <script setup lang="ts">
-import { ref } from "vue";
-import {
-  NGradientText,
-  NConfigProvider,
-  NGlobalStyle,
-  darkTheme,
-  NInput,
-  NButton,
-  NModal,
-} from "naive-ui";
-import OpenAI from "openai";
-import Card from "./components/card.vue";
-import { GetTaroCardByid, type TaroCard, SystemPrompt } from "./util.ts";
+import { ref } from 'vue';
+import { NGradientText, NConfigProvider, NGlobalStyle, darkTheme, NInput, NButton, NModal } from 'naive-ui';
+import OpenAI from 'openai';
+import Card from './components/card.vue';
+import { GetTaroCardByid, type TaroCard, SystemPrompt } from './util.ts';
 const apikey: string = import.meta.env.VITE_API_SECRET;
 const openai = new OpenAI({
-  baseURL: "https://api.siliconflow.cn/v1",
+  baseURL: 'https://api.siliconflow.cn/v1',
   apiKey: apikey,
-  dangerouslyAllowBrowser: true,
+  dangerouslyAllowBrowser: true
 });
 
-const MyInput = ref<string>("");
-const answer = ref<string>("");
+const MyInput = ref<string>('');
+const answer = ref<string>('');
 const loading = ref<boolean>(false);
-const ShowCard = ref<boolean>(false);
+const showCard = ref<boolean>(false);
 const showModal = ref<boolean>(false);
 const selectedCards = ref<TaroCard[]>([]);
 
@@ -38,7 +30,7 @@ const getAIResponse = async () => {
     return;
   }
   loading.value = true;
-  answer.value = "";
+  answer.value = '';
   showModal.value = true;
   const FirstCardPrompt: string = `我抽到的第一张塔罗牌是${selectedCards.value[0].name},他的寓意是${selectedCards.value[0].mean};`;
   const SecondCardPrompt: string = `我抽到的第二张塔罗牌是${selectedCards.value[1].name},他的寓意是${selectedCards.value[1].mean};`;
@@ -50,12 +42,12 @@ const getAIResponse = async () => {
   try {
     const stream = await openai.chat.completions.create(
       {
-        model: "deepseek-ai/DeepSeek-V2.5",
+        model: 'deepseek-ai/DeepSeek-V2.5',
         messages: [
-          { role: "system", content: SystemPrompt },
-          { role: "user", content: AllPrompt },
+          { role: 'system', content: SystemPrompt },
+          { role: 'user', content: AllPrompt }
         ],
-        stream: true,
+        stream: true
       },
       { signal: abortController.value.signal }
     );
@@ -66,7 +58,7 @@ const getAIResponse = async () => {
       }
     }
   } catch (error) {
-    console.error("获取AI传输流失败:", error);
+    console.error('获取AI传输流失败:', error);
   } finally {
     loading.value = false;
     abortController.value = null;
@@ -85,39 +77,16 @@ const handleModalClose = () => {
   <n-config-provider :theme="darkTheme">
     <n-global-style />
     <div class="container">
-      <n-gradient-text type="info" :size="32" style="font-weight: bolder">
-        CAU塔罗牌魔法屋
-      </n-gradient-text>
+      <n-gradient-text type="info" :size="32" style="font-weight: bolder"> CAU塔罗牌魔法屋 </n-gradient-text>
 
-      <n-input
-        v-model:value="MyInput"
-        placeholder="接受指引吧"
-        style="max-width: 60%"
-      />
+      <n-input v-model:value="MyInput" placeholder="接受指引吧" style="max-width: 60%" />
 
-      <n-button
-        :loading="loading"
-        type="primary"
-        @click="
-          () => {
-            ShowCard = true;
-          }
-        "
-      >
-        提交问题
-      </n-button>
+      <n-button :loading="loading" type="primary" @click="showCard = true">提交问题> </n-button>
 
-      <Card @cardsSelected="handleCardsSelected" v-show="ShowCard" />
+      <Card @cardsSelected="handleCardsSelected" v-show="showCard" />
     </div>
 
-    <n-modal
-      v-model:show="showModal"
-      preset="card"
-      title="塔罗师说:"
-      size="huge"
-      :on-after-leave="handleModalClose"
-      class="answer-model"
-    >
+    <n-modal v-model:show="showModal" preset="card" title="塔罗师说:" size="huge" :on-after-leave="handleModalClose" class="answer-model">
       <p class="taroAnswer" style="text-indent: 2em; font-weight: 400">
         {{ answer }}
       </p>
