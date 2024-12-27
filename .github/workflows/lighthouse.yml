@@ -20,13 +20,15 @@ jobs:
           
       - name: Install dependencies using pnpm
         run: |
-          npm install -g pnpm  # 只在首次运行时安装 pnpm
+          npm install -g pnpm
           pnpm install
 
       - name: Build project
         run: pnpm build
 
-      - name: Run Lighthouse CI
-        run: |
-          npm install -g @lhci/cli
-          lhci autorun
+      - name: Run Lighthouse against a static dist dir
+        uses: treosh/lighthouse-ci-action@v12
+        with:
+          configPath: './lighthouserc.json'
+          temporaryPublicStorage: true
+          runs: 3
