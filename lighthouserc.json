@@ -1,8 +1,19 @@
 {
-    "ci": {
-      "collect": {
-        "staticDistDir": "./dist"
+  "ci": {
+    "collect": {
+      "staticDistDir": "./dist"
+    },
+    "config": [
+      {
+        "settings": {
+          "emulatedFormFactor": "mobile"
+        }
+      },
+      {
+        "settings": {
+          "emulatedFormFactor": "desktop"
+        }
       }
-    }
+    ]
   }
-  
+}
