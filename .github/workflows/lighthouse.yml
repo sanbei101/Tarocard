@@ -1,0 +1,32 @@
+name: lighthouse-test
+
+on:
+  push:
+  workflow_dispatch:
+
+jobs:
+  lhci:
+    name: Lighthouse
+    runs-on: ubuntu-24.04
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js and pnpm
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          
+      - name: Install dependencies using pnpm
+        run: |
+          npm install -g pnpm  # 只在首次运行时安装 pnpm
+          pnpm install
+
+      - name: Build project
+        run: pnpm build
+
+      - name: Run Lighthouse CI
+        run: |
+          npm install -g @lhci/cli
+          lhci autorun
