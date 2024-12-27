@@ -4,7 +4,7 @@ import { NGradientText, NConfigProvider, NGlobalStyle, darkTheme, NInput, NButto
 import OpenAI from 'openai';
 import Card from './components/card.vue';
 import { GetTaroCardByid, type TaroCard, SystemPrompt } from './util.ts';
-const apikey: string = import.meta.env.VITE_API_SECRET;
+const apikey: string = import.meta.env.VITE_API_SECRET || 'sk-123456';
 const openai = new OpenAI({
   baseURL: 'https://api.siliconflow.cn/v1',
   apiKey: apikey,
