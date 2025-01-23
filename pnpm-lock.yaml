@@ -9,15 +9,15 @@ importers:
   .:
     dependencies:
       openai:
-        specifier: ^4.77.0
-        version: 4.77.0
+        specifier: ^4.80.0
+        version: 4.80.0
       vue:
         specifier: ^3.5.13
         version: 3.5.13(typescript@5.7.2)
     devDependencies:
       '@vitejs/plugin-vue':
         specifier: ^5.2.1
-        version: 5.2.1(vite@6.0.10(@types/node@18.19.68))(vue@3.5.13(typescript@5.7.2))
+        version: 5.2.1(vite@6.0.10(@types/node@18.19.74))(vue@3.5.13(typescript@5.7.2))
       '@vue/tsconfig':
         specifier: ^0.7.0
         version: 0.7.0(typescript@5.7.2)(vue@3.5.13(typescript@5.7.2))
@@ -29,10 +29,10 @@ importers:
         version: 5.7.2
       vite:
         specifier: ^6.0.10
-        version: 6.0.10(@types/node@18.19.68)
+        version: 6.0.10(@types/node@18.19.74)
       vite-plugin-compression:
         specifier: ^0.5.1
-        version: 0.5.1(vite@6.0.10(@types/node@18.19.68))
+        version: 0.5.1(vite@6.0.10(@types/node@18.19.74))
       vue-tsc:
         specifier: ^2.2.0
         version: 2.2.0(typescript@5.7.2)
@@ -335,8 +335,8 @@ packages:
   '@types/node-fetch@2.6.12':
     resolution: {integrity: sha512-8nneRWKCg3rMtF69nLQJnOYUcbafYeFSjqkw3jCRLsqkWFlHaoQrr5mXmofFGOx3DKn7UfmBMyov8ySvLRVldA==}
 
-  '@types/node@18.19.68':
-    resolution: {integrity: sha512-QGtpFH1vB99ZmTa63K4/FU8twThj4fuVSBkGddTp7uIL/cuoLWIUSL2RcOaigBhfR+hg5pgGkBnkoOxrTVBMKw==}
+  '@types/node@18.19.74':
+    resolution: {integrity: sha512-HMwEkkifei3L605gFdV+/UwtpxP6JSzM+xFk2Ia6DNFSwSVBRh9qp5Tgf4lNFOMfPVuU0WnkcWpXZpgn5ufO4A==}
 
   '@vitejs/plugin-vue@5.2.1':
     resolution: {integrity: sha512-cxh314tzaWwOLqVes2gnnCtvBDcM1UMdn+iFR+UjAn411dPT3tOmqrJjbMd7koZpMAmBM/GqeV4n9ge7JSiJJQ==}
@@ -409,8 +409,8 @@ packages:
     resolution: {integrity: sha512-h8lQ8tacZYnR3vNQTgibj+tODHI5/+l06Au2Pcriv/Gmet0eaj4TwWH41sO9wnHDiQsEj19q0drzdWdeAHtweg==}
     engines: {node: '>=6.5'}
 
-  agentkeepalive@4.5.0:
-    resolution: {integrity: sha512-5GG/5IbQQpC9FpkRGsSvZI5QYeSCzlJHdpBQntCsuTOxhKD8lqKhrleg2Yi7yvMIf82Ycmmqln9U8V9qwEiJew==}
+  agentkeepalive@4.6.0:
+    resolution: {integrity: sha512-kja8j7PjmncONqaTsB8fQ+wE2mSU2DJ9D4XKoJ5PFWIdRMa6SLSN1ff4mOr4jCbfRSsxR4keIiySJU0N9T5hIQ==}
     engines: {node: '>= 8.0.0'}
 
   alien-signals@0.4.10:
@@ -590,12 +590,15 @@ packages:
       encoding:
         optional: true
 
-  openai@4.77.0:
-    resolution: {integrity: sha512-WWacavtns/7pCUkOWvQIjyOfcdr9X+9n9Vvb0zFeKVDAqwCMDHB+iSr24SVaBAhplvSG6JrRXFpcNM9gWhOGIw==}
+  openai@4.80.0:
+    resolution: {integrity: sha512-5TqdNQgjOMxo3CkCvtjzuSwuznO/o3q5aak0MTy6IjRvPtvVA1wAFGJU3eZT1JHzhs2wFb/xtDG0o6Y/2KGCfw==}
     hasBin: true
     peerDependencies:
+      ws: ^8.18.0
       zod: ^3.23.8
     peerDependenciesMeta:
+      ws:
+        optional: true
       zod:
         optional: true
 
@@ -903,16 +906,16 @@ snapshots:
 
   '@types/node-fetch@2.6.12':
     dependencies:
-      '@types/node': 18.19.68
+      '@types/node': 18.19.74
       form-data: 4.0.1
 
-  '@types/node@18.19.68':
+  '@types/node@18.19.74':
     dependencies:
       undici-types: 5.26.5
 
-  '@vitejs/plugin-vue@5.2.1(vite@6.0.10(@types/node@18.19.68))(vue@3.5.13(typescript@5.7.2))':
+  '@vitejs/plugin-vue@5.2.1(vite@6.0.10(@types/node@18.19.74))(vue@3.5.13(typescript@5.7.2))':
     dependencies:
-      vite: 6.0.10(@types/node@18.19.68)
+      vite: 6.0.10(@types/node@18.19.74)
       vue: 3.5.13(typescript@5.7.2)
 
   '@volar/language-core@2.4.11':
@@ -1008,7 +1011,7 @@ snapshots:
     dependencies:
       event-target-shim: 5.0.1
 
-  agentkeepalive@4.5.0:
+  agentkeepalive@4.6.0:
     dependencies:
       humanize-ms: 1.2.1
 
@@ -1195,12 +1198,12 @@ snapshots:
     dependencies:
       whatwg-url: 5.0.0
 
-  openai@4.77.0:
+  openai@4.80.0:
     dependencies:
-      '@types/node': 18.19.68
+      '@types/node': 18.19.74
       '@types/node-fetch': 2.6.12
       abort-controller: 3.0.0
-      agentkeepalive: 4.5.0
+      agentkeepalive: 4.6.0
       form-data-encoder: 1.7.2
       formdata-node: 4.4.1
       node-fetch: 2.7.0
@@ -1265,22 +1268,22 @@ snapshots:
       evtd: 0.2.4
       vue: 3.5.13(typescript@5.7.2)
 
-  vite-plugin-compression@0.5.1(vite@6.0.10(@types/node@18.19.68)):
+  vite-plugin-compression@0.5.1(vite@6.0.10(@types/node@18.19.74)):
     dependencies:
       chalk: 4.1.2
       debug: 4.4.0
       fs-extra: 10.1.0
-      vite: 6.0.10(@types/node@18.19.68)
+      vite: 6.0.10(@types/node@18.19.74)
     transitivePeerDependencies:
       - supports-color
 
-  vite@6.0.10(@types/node@18.19.68):
+  vite@6.0.10(@types/node@18.19.74):
     dependencies:
       esbuild: 0.24.2
       postcss: 8.5.1
       rollup: 4.31.0
     optionalDependencies:
-      '@types/node': 18.19.68
+      '@types/node': 18.19.74
       fsevents: 2.3.3
 
   vooks@0.2.12(vue@3.5.13(typescript@5.7.2)):
