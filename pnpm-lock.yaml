@@ -9,15 +9,15 @@ importers:
   .:
     dependencies:
       openai:
-        specifier: ^4.84.0
-        version: 4.84.0
+        specifier: ^4.85.0
+        version: 4.85.0
       vue:
         specifier: ^3.5.13
         version: 3.5.13(typescript@5.7.2)
     devDependencies:
       '@vitejs/plugin-vue':
         specifier: ^5.2.1
-        version: 5.2.1(vite@6.1.0(@types/node@18.19.75))(vue@3.5.13(typescript@5.7.2))
+        version: 5.2.1(vite@6.1.0(@types/node@18.19.76))(vue@3.5.13(typescript@5.7.2))
       '@vue/tsconfig':
         specifier: ^0.7.0
         version: 0.7.0(typescript@5.7.2)(vue@3.5.13(typescript@5.7.2))
@@ -29,10 +29,10 @@ importers:
         version: 5.7.2
       vite:
         specifier: ^6.1.0
-        version: 6.1.0(@types/node@18.19.75)
+        version: 6.1.0(@types/node@18.19.76)
       vite-plugin-compression:
         specifier: ^0.5.1
-        version: 0.5.1(vite@6.1.0(@types/node@18.19.75))
+        version: 0.5.1(vite@6.1.0(@types/node@18.19.76))
       vue-tsc:
         specifier: ^2.2.0
         version: 2.2.0(typescript@5.7.2)
@@ -335,8 +335,8 @@ packages:
   '@types/node-fetch@2.6.12':
     resolution: {integrity: sha512-8nneRWKCg3rMtF69nLQJnOYUcbafYeFSjqkw3jCRLsqkWFlHaoQrr5mXmofFGOx3DKn7UfmBMyov8ySvLRVldA==}
 
-  '@types/node@18.19.75':
-    resolution: {integrity: sha512-UIksWtThob6ZVSyxcOqCLOUNg/dyO1Qvx4McgeuhrEtHTLFTf7BBhEazaE4K806FGTPtzd/2sE90qn4fVr7cyw==}
+  '@types/node@18.19.76':
+    resolution: {integrity: sha512-yvR7Q9LdPz2vGpmpJX5LolrgRdWvB67MJKDPSgIIzpFbaf9a1j/f5DnLp5VDyHGMR0QZHlTr1afsD87QCXFHKw==}
 
   '@vitejs/plugin-vue@5.2.1':
     resolution: {integrity: sha512-cxh314tzaWwOLqVes2gnnCtvBDcM1UMdn+iFR+UjAn411dPT3tOmqrJjbMd7koZpMAmBM/GqeV4n9ge7JSiJJQ==}
@@ -590,8 +590,8 @@ packages:
       encoding:
         optional: true
 
-  openai@4.84.0:
-    resolution: {integrity: sha512-Smu45QjqWcPXkTHAI7GSeW+sI9ZOqB9VW4wiuhBvWLGHYC9dn/3rIpG8PUysbCT+ciVyDdEdsx0zkgKQDoOx9Q==}
+  openai@4.85.0:
+    resolution: {integrity: sha512-HRpbTBViDmccPU3PqPkv95ohkzcnSNQ7ERKNftUgB3kD/rbG45PdTPLPFnaWTS5DsDlGD41OH4BwanNW/tt+Ww==}
     hasBin: true
     peerDependencies:
       ws: ^8.18.0
@@ -906,16 +906,16 @@ snapshots:
 
   '@types/node-fetch@2.6.12':
     dependencies:
-      '@types/node': 18.19.75
+      '@types/node': 18.19.76
       form-data: 4.0.1
 
-  '@types/node@18.19.75':
+  '@types/node@18.19.76':
     dependencies:
       undici-types: 5.26.5
 
-  '@vitejs/plugin-vue@5.2.1(vite@6.1.0(@types/node@18.19.75))(vue@3.5.13(typescript@5.7.2))':
+  '@vitejs/plugin-vue@5.2.1(vite@6.1.0(@types/node@18.19.76))(vue@3.5.13(typescript@5.7.2))':
     dependencies:
-      vite: 6.1.0(@types/node@18.19.75)
+      vite: 6.1.0(@types/node@18.19.76)
       vue: 3.5.13(typescript@5.7.2)
 
   '@volar/language-core@2.4.11':
@@ -1198,9 +1198,9 @@ snapshots:
     dependencies:
       whatwg-url: 5.0.0
 
-  openai@4.84.0:
+  openai@4.85.0:
     dependencies:
-      '@types/node': 18.19.75
+      '@types/node': 18.19.76
       '@types/node-fetch': 2.6.12
       abort-controller: 3.0.0
       agentkeepalive: 4.6.0
@@ -1268,22 +1268,22 @@ snapshots:
       evtd: 0.2.4
       vue: 3.5.13(typescript@5.7.2)
 
-  vite-plugin-compression@0.5.1(vite@6.1.0(@types/node@18.19.75)):
+  vite-plugin-compression@0.5.1(vite@6.1.0(@types/node@18.19.76)):
     dependencies:
       chalk: 4.1.2
       debug: 4.4.0
       fs-extra: 10.1.0
-      vite: 6.1.0(@types/node@18.19.75)
+      vite: 6.1.0(@types/node@18.19.76)
     transitivePeerDependencies:
       - supports-color
 
-  vite@6.1.0(@types/node@18.19.75):
+  vite@6.1.0(@types/node@18.19.76):
     dependencies:
       esbuild: 0.24.2
       postcss: 8.5.2
       rollup: 4.34.6
     optionalDependencies:
-      '@types/node': 18.19.75
+      '@types/node': 18.19.76
       fsevents: 2.3.3
 
   vooks@0.2.12(vue@3.5.13(typescript@5.7.2)):
