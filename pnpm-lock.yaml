@@ -16,8 +16,8 @@ importers:
         version: 3.5.13(typescript@5.8.2)
     devDependencies:
       '@vitejs/plugin-vue':
-        specifier: ^5.2.1
-        version: 5.2.1(vite@6.2.0(@types/node@18.19.76))(vue@3.5.13(typescript@5.8.2))
+        specifier: ^5.2.2
+        version: 5.2.2(vite@6.2.0(@types/node@18.19.76))(vue@3.5.13(typescript@5.8.2))
       '@vue/tsconfig':
         specifier: ^0.7.0
         version: 0.7.0(typescript@5.8.2)(vue@3.5.13(typescript@5.8.2))
@@ -338,8 +338,8 @@ packages:
   '@types/node@18.19.76':
     resolution: {integrity: sha512-yvR7Q9LdPz2vGpmpJX5LolrgRdWvB67MJKDPSgIIzpFbaf9a1j/f5DnLp5VDyHGMR0QZHlTr1afsD87QCXFHKw==}
 
-  '@vitejs/plugin-vue@5.2.1':
-    resolution: {integrity: sha512-cxh314tzaWwOLqVes2gnnCtvBDcM1UMdn+iFR+UjAn411dPT3tOmqrJjbMd7koZpMAmBM/GqeV4n9ge7JSiJJQ==}
+  '@vitejs/plugin-vue@5.2.2':
+    resolution: {integrity: sha512-IY0aPonWZI2huxrWjoSBUQX14GThitmr1sc2OUJymcgnY5RlUI7HoXGAnFEoVNRsck/kS6inGvxCN6CoHu86yQ==}
     engines: {node: ^18.0.0 || >=20.0.0}
     peerDependencies:
       vite: ^5.0.0 || ^6.0.0
@@ -968,7 +968,7 @@ snapshots:
     dependencies:
       undici-types: 5.26.5
 
-  '@vitejs/plugin-vue@5.2.1(vite@6.2.0(@types/node@18.19.76))(vue@3.5.13(typescript@5.8.2))':
+  '@vitejs/plugin-vue@5.2.2(vite@6.2.0(@types/node@18.19.76))(vue@3.5.13(typescript@5.8.2))':
     dependencies:
       vite: 6.2.0(@types/node@18.19.76)
       vue: 3.5.13(typescript@5.8.2)
