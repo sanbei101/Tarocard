@@ -9,8 +9,8 @@ importers:
   .:
     dependencies:
       openai:
-        specifier: ^4.87.4
-        version: 4.87.4
+        specifier: ^4.88.0
+        version: 4.88.0
       vue:
         specifier: ^3.5.13
         version: 3.5.13(typescript@5.8.2)
@@ -645,8 +645,8 @@ packages:
       encoding:
         optional: true
 
-  openai@4.87.4:
-    resolution: {integrity: sha512-lsfM20jZY4A0lNexfoUAkfmrEXxaTXvv8OKYicpeAJUNHObpRgkvC7pxPgMnB6gc9ID8OCwzzhEhBpNy69UR7w==}
+  openai@4.88.0:
+    resolution: {integrity: sha512-Ll2ZJCdX/56WcCF/wLtAFou+zWRyLeneoXy+qya5T5/wm5LkIr6heJfSn53c5ujXWPB+24cgumiOetbFqcppFA==}
     hasBin: true
     peerDependencies:
       ws: ^8.18.0
@@ -1314,7 +1314,7 @@ snapshots:
     dependencies:
       whatwg-url: 5.0.0
 
-  openai@4.87.4:
+  openai@4.88.0:
     dependencies:
       '@types/node': 18.19.80
       '@types/node-fetch': 2.6.12
