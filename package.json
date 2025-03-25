@@ -17,7 +17,7 @@
     "@vue/tsconfig": "^0.7.0",
     "naive-ui": "^2.41.0",
     "typescript": "~5.8.2",
-    "vite": "^6.2.2",
+    "vite": "^6.2.3",
     "vite-plugin-compression": "^0.5.1",
     "vue-tsc": "^2.2.8"
   }
