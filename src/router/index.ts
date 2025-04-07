@@ -1,13 +1,18 @@
 import { createRouter, createWebHistory } from 'vue-router'
 
 import Home from '@/components/Home.vue'
-
+import TarotDeck from '@/components/TarotDeck.vue'
 
 const routes = [
   {
     path: '/',
     name: 'Home',
     component: Home
+  },
+  {
+    path: '/tarodeck',
+    name: 'TaroDeck',
+    component: TarotDeck
   }
 ]
 

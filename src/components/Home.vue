@@ -2,12 +2,13 @@
 import { ref } from 'vue';
 import { Search, ChevronDown, Moon, Sun, User, Crown } from 'lucide-vue-next';
 import { computed } from 'vue';
+import { useRouter } from 'vue-router';
 const questionInput = ref<string>('');
 const charCount = computed(() => questionInput.value.length);
 const maxChars = 300;
 const sampleQuestions = [
   { icon: '🔍', text: '这段缘分是未完待续...还是终将散场?' },
-  { icon: '✨', text: 'Ta心底是否藏着一个「秘密答案」？' },
+  { icon: '✨', text: 'Ta心底是否藏着一个「秘密答案」?' },
   { icon: '💜', text: '谁会先打破沉默? 72小时内的转机' },
   { icon: '✨', text: '三个月内，我的事业将折点会出现在哪个方向?' }
 ];
@@ -16,6 +17,11 @@ const isDarkMode = ref(false);
 const toggleDarkMode = () => {
   isDarkMode.value = !isDarkMode.value;
 };
+const getAnswer = () => {
+  router.go(-1);
+};
+
+const router = useRouter();
 </script>
 
 <template>
@@ -79,7 +85,7 @@ const toggleDarkMode = () => {
               placeholder="输入您想占卜的问题"
               class="h-32 w-full rounded-lg bg-gray-100 p-4 pr-10 transition-colors duration-500 outline-none hover:bg-gray-200"
               :maxlength="maxChars"></textarea>
-            <button class="absolute top-4 right-4 cursor-pointer text-gray-400 hover:text-gray-600">
+            <button @click="getAnswer" class="absolute top-4 right-4 cursor-pointer text-gray-400 hover:text-gray-600">
               <Search class="h-6 w-6" />
             </button>
             <div class="absolute bottom-4 left-4 text-sm text-gray-500">{{ charCount }}/{{ maxChars }}</div>

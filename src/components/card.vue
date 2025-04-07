@@ -1,179 +1,75 @@
-<script setup lang="ts">
-import { ref, computed } from 'vue';
-import { GetTaroNameByid } from '../util';
-const SelectedCard = ref<number[]>([]);
-
-const isCardSelected = (index: number) => SelectedCard.value.includes(index);
-
-const canSelectMore = computed(() => SelectedCard.value.length < 3);
-
-const toggleCard = (index: number) => {
-  if (isCardSelected(index)) {
-    SelectedCard.value = SelectedCard.value.filter((i) => i !== index);
-  } else if (canSelectMore.value) {
-    SelectedCard.value.push(index);
-    if (SelectedCard.value.length === 3) {
-      emit('cardsSelected', SelectedCard.value);
-    }
-  }
-};
-const emit = defineEmits<{
-  (event: 'cardsSelected', selectedCards: number[]): void;
-}>();
-</script>
-
 <template>
-  <div class="card-container" tabindex="0">
+  <div
+    class="transition-all duration-300"
+    :class="[
+      selected ? 'z-10 -translate-y-10 transform' : `z-${zIndex}`,
+      disabled ? 'cursor-not-allowed opacity-50' : 'cursor-pointer hover:shadow-lg'
+    ]"
+    @click="handleClick">
     <div
-      v-for="i in 9"
-      :key="i"
-      class="card"
-      :class="{ selected: isCardSelected(i) }"
-      :style="{ '--i': i - 5 }"
-      @click="toggleCard(i)"
-      tabindex="0">
-      <div class="card-front">
-        {{ i }}
-      </div>
-      <div class="card-back">
-        {{ GetTaroNameByid(i) }}
-      </div>
+      class="card-inner flex h-56 w-36 items-center justify-center rounded-lg shadow-md"
+      :class="[selected ? 'border-2 border-indigo-500 bg-indigo-100' : 'bg-purple-900']">
+      <transition name="fade-flip" mode="out-in">
+        <div v-if="selected || revealed" key="front" class="card-front text-center">
+          <h3 class="text-lg font-bold text-indigo-800">{{ card.name }}</h3>
+          <div class="mt-2">
+            <img :src="card.image" alt="塔罗牌" class="mx-auto h-24 w-24 object-contain" />
+          </div>
+        </div>
+        <div v-else key="back" class="card-back">
+          <div class="flex h-full items-center justify-center">
+            <StarIcon class="h-10 w-10 text-yellow-400" />
+          </div>
+        </div>
+      </transition>
     </div>
   </div>
 </template>
 
+<script setup lang="ts">
+import { defineProps, defineEmits } from 'vue';
+import { Star as StarIcon } from 'lucide-vue-next';
+
+interface TarotCard {
+  id: number;
+  name: string;
+  image: string;
+  meaning?: string;
+}
+
+const props = defineProps<{
+  card: TarotCard;
+  zIndex: number;
+  selected: boolean;
+  disabled: boolean;
+  revealed: boolean;
+}>();
+
+const emit = defineEmits(['select']);
+
+const handleClick = () => {
+  if (!props.disabled) {
+    emit('select', props.card);
+  }
+};
+</script>
+
 <style scoped>
-.card:nth-child(1) .card-front,
-.card:nth-child(1) .card-back {
-  background-color: #ff6b6b;
+/* 定义 fade-flip 动画效果 */
+.fade-flip-enter-active,
+.fade-flip-leave-active {
+  transition:
+    opacity 0.3s,
+    transform 0.3s;
 }
-.card:nth-child(2) .card-front,
-.card:nth-child(2) .card-back {
-  background-color: #4ecdc4;
+.fade-flip-enter-from,
+.fade-flip-leave-to {
+  opacity: 0;
+  transform: rotateY(90deg);
 }
-.card:nth-child(3) .card-front,
-.card:nth-child(3) .card-back {
-  background-color: #45b7d1;
-}
-.card:nth-child(4) .card-front,
-.card:nth-child(4) .card-back {
-  background-color: #ffa07a;
-}
-.card:nth-child(5) .card-front,
-.card:nth-child(5) .card-back {
-  background-color: #98d8c8;
-}
-.card:nth-child(6) .card-front,
-.card:nth-child(6) .card-back {
-  background-color: #f7dc6f;
-}
-.card:nth-child(7) .card-front,
-.card:nth-child(7) .card-back {
-  background-color: #bb8fce;
-}
-.card:nth-child(8) .card-front,
-.card:nth-child(8) .card-back {
-  background-color: #82e0aa;
-}
-.card:nth-child(9) .card-front,
-.card:nth-child(9) .card-back {
-  background-color: #f1948a;
-}
-
-.card-container {
-  position: relative;
-  width: 100%;
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  padding-top: 4rem;
-  overflow: hidden;
-  perspective: 1000px;
-}
-
-.card {
-  position: absolute;
-  width: 240px;
-  height: 320px;
-  border-radius: 8px;
-  cursor: pointer;
-  transform-style: preserve-3d;
-  /* 启用3D转换 */
-  transition: transform 0.5s;
-  transform-origin: center center;
-}
-
-.card-front,
-.card-back {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  backface-visibility: hidden;
-  /* 隐藏背面 */
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 8em;
-  font-weight: 700;
-  border-radius: 8px;
-}
-
-.card-front {
-  color: rgba(0, 0, 0, 0.2);
-}
-
-.card-back {
-  color: rgba(0, 0, 0, 0.8);
-  transform: rotateY(180deg);
-}
-
-.card-container:hover .card:not(.selected),
-.card-container:focus-within .card:not(.selected) {
-  transform: rotate(calc(var(--i) * 5deg)) translate(calc(var(--i) * 120px));
-}
-
-.card.selected {
-  transform: translateY(-50px) rotate(calc(var(--i) * 5deg)) translate(calc(var(--i) * 120px)) rotateY(180deg);
-  z-index: 100;
-}
-
-@media (max-width: 768px) {
-  .card-container {
-    flex-direction: column;
-    align-items: center;
-    padding-top: 2rem;
-    height: auto;
-  }
-
-  .card {
-    position: relative;
-    width: 70vw;
-    height: 40vw;
-    transition:
-      transform 0.5s,
-      margin-bottom 0.5s;
-    margin-bottom: -80px;
-  }
-
-  .card-front,
-  .card-back {
-    font-size: 10vw;
-  }
-
-  .card-container:hover .card:not(.selected),
-  .card-container:focus-within .card:not(.selected) {
-    transform: none;
-  }
-
-  .card-container:hover .card,
-  .card-container:focus-within .card {
-    margin-bottom: -50px;
-  }
-
-  .card.selected {
-    transform: translateY(-20px) rotateY(180deg);
-    z-index: 100;
-    margin-bottom: 0;
-  }
+.fade-flip-leave-from,
+.fade-flip-enter-to {
+  opacity: 1;
+  transform: rotateY(0deg);
 }
 </style>
