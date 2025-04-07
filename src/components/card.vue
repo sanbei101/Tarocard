@@ -30,7 +30,7 @@
 import { defineProps, defineEmits } from 'vue';
 import { Star as StarIcon } from 'lucide-vue-next';
 
-interface TarotCard {
+export interface TarotCard {
   id: number;
   name: string;
   image: string;
@@ -45,8 +45,9 @@ const props = defineProps<{
   revealed: boolean;
 }>();
 
-const emit = defineEmits(['select']);
-
+const emit = defineEmits<{
+  select: [card: TarotCard];
+}>();
 const handleClick = () => {
   if (!props.disabled) {
     emit('select', props.card);

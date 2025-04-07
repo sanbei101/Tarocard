@@ -61,15 +61,9 @@
 import { ref, computed } from 'vue';
 import Card from './Card.vue';
 import { RefreshCw, Check } from 'lucide-vue-next';
+import type { TarotCard } from './Card.vue';
 
 const MaxSelection = 5;
-interface TarotCard {
-  id: number;
-  name: string;
-  image: string;
-  meaning?: string;
-}
-
 // 模拟塔罗牌数据
 const tarotCards = ref<TarotCard[]>([
   { id: 1, name: '愚者', image: '/images/fool.jpg' },
