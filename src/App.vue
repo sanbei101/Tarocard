@@ -24,7 +24,7 @@ const toggleDarkMode = () => {
       <!-- Header -->
       <header class="flex items-center justify-between py-4">
         <div class="flex items-center">
-          <button class="flex items-center text-lg font-bold"><span class="mr-1 text-xl">◉</span> Tarotap</button>
+          <button class="flex items-center text-lg font-bold"><span class="mr-1 text-xl">◉</span> CAU-Tarotap</button>
         </div>
 
         <nav class="hidden items-center space-x-4 md:flex">
@@ -51,7 +51,7 @@ const toggleDarkMode = () => {
         </nav>
 
         <div class="flex items-center space-x-4">
-          <button @click="toggleDarkMode" class="rounded-full p-2">
+          <button @click="toggleDarkMode" class="cursor-pointer rounded-full p-2">
             <Moon v-if="!isDarkMode" class="h-5 w-5" />
             <Sun v-else class="h-5 w-5" />
           </button>
