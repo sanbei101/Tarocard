@@ -19,11 +19,11 @@
         }" />
     </div>
 
-    <div class="selected-cards mt-10 mb-8 flex gap-4">
+    <div class="mt-10 mb-8 flex w-full gap-x-2 overflow-x-auto px-4 sm:justify-center sm:gap-x-4">
       <div
         v-for="i in 5"
         :key="i"
-        class="flex h-56 w-36 items-center justify-center rounded-lg border-2 border-dashed border-indigo-300">
+        class="flex h-56 min-w-36 items-center justify-center rounded-lg border-2 border-dashed border-indigo-300">
         <Transition name="fade-flip" mode="out-in">
           <div v-if="selectedCards[i - 1]">
             <card
