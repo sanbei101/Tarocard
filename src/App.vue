@@ -19,16 +19,16 @@ const toggleDarkMode = () => {
 </script>
 
 <template>
-  <div class="min-h-screen bg-gray-50 dark:bg-gray-900">
+  <div class="min-h-screen dark:bg-gray-900">
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
       <!-- Header -->
-      <header class="flex items-center justify-between py-4">
+      <header class="mb-12 flex items-center justify-between py-4">
         <div class="flex items-center">
           <button class="flex items-center text-lg font-bold"><span class="mr-1 text-xl">◉</span> CAU-Tarotap</button>
         </div>
 
-        <nav class="hidden items-center space-x-4 md:flex">
-          <a href="#" class="flex items-center rounded-full bg-gray-100 px-3 py-2 dark:bg-gray-800">
+        <nav class="hidden items-center space-x-4 rounded-full bg-gray-50 p-2 font-bold md:flex">
+          <a href="#" class="flex items-center px-3 py-2 dark:bg-gray-800">
             <Crown class="mr-1 h-4 w-4 text-yellow-500" />
             <span class="text-sm">会员订阅</span>
           </a>
@@ -63,31 +63,31 @@ const toggleDarkMode = () => {
 
       <!-- Main Content -->
       <main class="flex flex-col items-center py-12">
-        <div class="mx-auto mb-12 max-w-2xl text-center">
-          <h1 class="mb-1 text-4xl font-bold">
-            <span class="text-pink-500">输入您的</span>
+        <div class="mx-auto mb-6 max-w-2xl text-center">
+          <h1 class="mb-3 text-5xl font-bold">
+            <span class="bg-gradient-to-r from-pink-500 to-purple-500 bg-clip-text text-transparent"> 输入您的 </span>
             <div class="text-black dark:text-white">塔罗牌问题</div>
           </h1>
-          <p class="text-gray-600 dark:text-gray-400">您想占卜什么问题？</p>
+          <p class="text-xl text-gray-600 dark:text-gray-400">您想占卜什么问题？</p>
         </div>
 
         <!-- Question Input -->
-        <div class="mx-auto mb-8 w-full max-w-2xl">
+        <div class="mx-auto mb-8 w-full max-w-4xl">
           <div class="relative">
             <textarea
               v-model="questionInput"
               placeholder="输入您想占卜的问题"
-              class="h-32 w-full rounded-lg border bg-white p-4 pr-10 focus:ring-2 focus:ring-pink-500 focus:outline-none dark:border-gray-700 dark:bg-gray-800 dark:text-white"
+              class="h-32 w-full rounded-lg bg-gray-100 p-4 pr-10 transition-colors duration-500 outline-none hover:bg-gray-200"
               :maxlength="maxChars"></textarea>
             <button class="absolute top-4 right-4 cursor-pointer text-gray-400 hover:text-gray-600">
               <Search class="h-6 w-6" />
             </button>
-            <div class="mt-1 text-right text-sm text-gray-500">{{ charCount }}/{{ maxChars }}</div>
+            <div class="absolute bottom-4 left-4 text-sm text-gray-500">{{ charCount }}/{{ maxChars }}</div>
           </div>
         </div>
 
         <!-- Sample Questions -->
-        <div class="mx-auto grid w-full max-w-2xl grid-cols-1 gap-4 md:grid-cols-2">
+        <div class="mx-auto grid w-full max-w-4xl grid-cols-1 gap-4 md:grid-cols-2">
           <div
             v-for="(question, index) in sampleQuestions"
             :key="index"
