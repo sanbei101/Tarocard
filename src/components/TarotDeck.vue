@@ -22,17 +22,19 @@
 
     <div class="selected-cards mt-10 mb-8 flex gap-4">
       <div v-for="i in 5" :key="i" class="flex h-56 w-36 items-center justify-center rounded-lg border-2 border-dashed border-indigo-300">
-        <template v-if="selectedCards[i - 1]">
-          <card
-            :card="selectedCards[i - 1]"
-            :z-index="1"
-            :selected="true"
-            :disabled="false"
-            :revealed="true"
-            @select="() => {}"
-            class="translate-y-0 transform" />
-        </template>
-        <span v-else class="text-indigo-300">牌 #{{ i }}</span>
+        <Transition name="fade-flip" mode="out-in">
+          <div v-if="selectedCards[i - 1]">
+            <card
+              :card="selectedCards[i - 1]"
+              :z-index="1"
+              :selected="true"
+              :disabled="false"
+              :revealed="true"
+              @select="() => {}"
+              class="translate-y-0 transform" />
+          </div>
+          <span v-else class="text-indigo-300">牌 #{{ i }}</span>
+        </Transition>
       </div>
     </div>
 
@@ -134,3 +136,23 @@ const confirmSelection = () => {
   }
 };
 </script>
+
+<style scoped>
+/* 定义 fade-slide 动画效果 */
+.fade-flip-enter-active,
+.fade-flip-leave-active {
+  transition:
+    opacity 0.3s,
+    transform 0.3s;
+}
+.fade-flip-enter-from,
+.fade-flip-leave-to {
+  opacity: 0;
+  transform: translateY(20px); /* 从下方开始 */
+}
+.fade-flip-leave-from,
+.fade-flip-enter-to {
+  opacity: 1;
+  transform: translateY(0); /* 到原始位置 */
+}
+</style>
