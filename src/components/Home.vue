@@ -3,6 +3,7 @@ import { ref } from 'vue';
 import { Search, ChevronDown, Moon, Sun, User, Crown } from 'lucide-vue-next';
 import { computed } from 'vue';
 import { useRouter } from 'vue-router';
+import { RouteNames } from '@/router';
 const questionInput = ref<string>('');
 const charCount = computed(() => questionInput.value.length);
 const maxChars = 300;
@@ -18,7 +19,9 @@ const toggleDarkMode = () => {
   isDarkMode.value = !isDarkMode.value;
 };
 const getAnswer = () => {
-  router.go(-1);
+  router.push({
+    name: RouteNames.TaroDeck
+  });
 };
 
 const router = useRouter();

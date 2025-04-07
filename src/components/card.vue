@@ -13,7 +13,7 @@
         <div v-if="selected || revealed" key="front" class="card-front text-center">
           <h3 class="text-lg font-bold text-indigo-800">{{ card.name }}</h3>
           <div class="mt-2">
-            <img :src="card.image" alt="塔罗牌" class="mx-auto h-24 w-24 object-contain" />
+            <component :is="card.image" class="mx-auto h-24 w-24 object-contain" />
           </div>
         </div>
         <div v-else key="back" class="card-back">
@@ -27,18 +27,17 @@
 </template>
 
 <script setup lang="ts">
-import { defineProps, defineEmits } from 'vue';
-import { Star as StarIcon } from 'lucide-vue-next';
-
-export interface TarotCard {
+import { defineProps, defineEmits, type FunctionalComponent } from 'vue';
+import { Star as StarIcon, type LucideProps } from 'lucide-vue-next';
+export interface TaroCard {
   id: number;
   name: string;
-  image: string;
+  image: FunctionalComponent<LucideProps>;
   meaning?: string;
 }
 
 const props = defineProps<{
-  card: TarotCard;
+  card: TaroCard;
   zIndex: number;
   selected: boolean;
   disabled: boolean;
@@ -46,7 +45,7 @@ const props = defineProps<{
 }>();
 
 const emit = defineEmits<{
-  select: [card: TarotCard];
+  select: [card: TaroCard];
 }>();
 const handleClick = () => {
   if (!props.disabled) {

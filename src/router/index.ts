@@ -1,8 +1,11 @@
 import { createRouter, createWebHistory } from 'vue-router'
 
 import Home from '@/components/Home.vue'
-import TarotDeck from '@/components/TarotDeck.vue'
-
+import TaroDeck from '@/components/TaroDeck.vue'
+export const RouteNames = {
+  Home: 'Home',
+  TaroDeck: 'TaroDeck'
+};
 const routes = [
   {
     path: '/',
@@ -12,7 +15,7 @@ const routes = [
   {
     path: '/tarodeck',
     name: 'TaroDeck',
-    component: TarotDeck
+    component: TaroDeck
   }
 ]
 

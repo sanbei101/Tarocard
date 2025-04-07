@@ -1,10 +1,9 @@
 <template>
   <div class="flex flex-col items-center">
     <h1 class="mb-6 text-2xl font-bold text-indigo-800">选择五张塔罗牌</h1>
-
-    <div class="relative mb-10 h-96 w-full max-w-4xl overflow-auto">
+    <div class="relative mb-10 h-120 w-full max-w-4xl overflow-auto">
       <card
-        v-for="(card, index) in tarotCards"
+        v-for="(card, index) in taroCards"
         :key="card.id"
         :card="card"
         :z-index="index"
@@ -21,7 +20,10 @@
     </div>
 
     <div class="selected-cards mt-10 mb-8 flex gap-4">
-      <div v-for="i in 5" :key="i" class="flex h-56 w-36 items-center justify-center rounded-lg border-2 border-dashed border-indigo-300">
+      <div
+        v-for="i in 5"
+        :key="i"
+        class="flex h-56 w-36 items-center justify-center rounded-lg border-2 border-dashed border-indigo-300">
         <Transition name="fade-flip" mode="out-in">
           <div v-if="selectedCards[i - 1]">
             <card
@@ -61,39 +63,14 @@
 import { ref, computed } from 'vue';
 import Card from './Card.vue';
 import { RefreshCw, Check } from 'lucide-vue-next';
-import type { TarotCard } from './Card.vue';
-
+import type { TaroCard } from './Card.vue';
+import { taroCards } from '@/utils/const';
 const MaxSelection = 5;
-// 模拟塔罗牌数据
-const tarotCards = ref<TarotCard[]>([
-  { id: 1, name: '愚者', image: '/images/fool.jpg' },
-  { id: 2, name: '魔术师', image: '/images/magician.jpg' },
-  { id: 3, name: '女祭司', image: '/images/priestess.jpg' },
-  { id: 4, name: '女皇', image: '/images/empress.jpg' },
-  { id: 5, name: '皇帝', image: '/images/emperor.jpg' },
-  { id: 6, name: '教皇', image: '/images/hierophant.jpg' },
-  { id: 7, name: '恋人', image: '/images/lovers.jpg' },
-  { id: 8, name: '战车', image: '/images/chariot.jpg' },
-  { id: 9, name: '力量', image: '/images/strength.jpg' },
-  { id: 10, name: '隐士', image: '/images/hermit.jpg' },
-  { id: 11, name: '命运之轮', image: '/images/wheel.jpg' },
-  { id: 12, name: '正义', image: '/images/justice.jpg' },
-  { id: 13, name: '吊人', image: '/images/hanged.jpg' },
-  { id: 14, name: '死神', image: '/images/death.jpg' },
-  { id: 15, name: '节制', image: '/images/temperance.jpg' },
-  { id: 16, name: '恶魔', image: '/images/devil.jpg' },
-  { id: 17, name: '塔', image: '/images/tower.jpg' },
-  { id: 18, name: '星星', image: '/images/star.jpg' },
-  { id: 19, name: '月亮', image: '/images/moon.jpg' },
-  { id: 20, name: '太阳', image: '/images/sun.jpg' },
-  { id: 21, name: '审判', image: '/images/judgement.jpg' },
-  { id: 22, name: '世界', image: '/images/world.jpg' }
-]);
 
-const selectedCards = ref<TarotCard[]>([]);
+const selectedCards = ref<TaroCard[]>([]);
 const isSelectionComplete = computed(() => selectedCards.value.length === MaxSelection);
 
-const selectCard = (card: TarotCard) => {
+const selectCard = (card: TaroCard) => {
   if (selectedCards.value.some((c) => c.id === card.id)) {
     // 取消选择
     selectedCards.value = selectedCards.value.filter((c) => c.id !== card.id);
@@ -107,8 +84,8 @@ const getRandomPosition = (index: number, axis: 'x' | 'y') => {
   // 使用索引确保每次位置一致，同时添加一些随机性
   const seed = index * 1372 + (axis === 'x' ? 762 : 891);
   const random = Math.sin(seed) * 10000;
-  const range = axis === 'x' ? 300 : 150;
-  const base = axis === 'x' ? 150 : 50;
+  const range = axis === 'x' ? 500 : 300;
+  const base = axis === 'x' ? 50 : 50;
   return base + (random - Math.floor(random)) * range;
 };
 
