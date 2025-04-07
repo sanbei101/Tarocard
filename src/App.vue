@@ -1,119 +1,115 @@
 <script setup lang="ts">
 import { ref } from 'vue';
-import { NGradientText, NConfigProvider, NGlobalStyle, darkTheme, NInput, NButton, NModal } from 'naive-ui';
-import OpenAI from 'openai';
-import Card from './components/card.vue';
-import { GetTaroCardByid, type TaroCard, SystemPrompt } from './util.ts';
-const apikey: string = import.meta.env.VITE_API_SECRET || 'sk-123456';
-const openai = new OpenAI({
-  baseURL: 'https://api.siliconflow.cn/v1',
-  apiKey: apikey,
-  dangerouslyAllowBrowser: true
-});
+import { Search, ChevronDown, Moon, Sun, User, Crown } from 'lucide-vue-next';
+import { computed } from 'vue';
+const questionInput = ref<string>('');
+const charCount = computed(() => questionInput.value.length);
+const maxChars = 300;
+const sampleQuestions = [
+  { icon: '🔍', text: '这段缘分是未完待续...还是终将散场?' },
+  { icon: '✨', text: 'Ta心底是否藏着一个「秘密答案」？' },
+  { icon: '💜', text: '谁会先打破沉默? 72小时内的转机' },
+  { icon: '✨', text: '三个月内，我的事业将折点会出现在哪个方向?' }
+];
 
-const MyInput = ref<string>('');
-const answer = ref<string>('');
-const loading = ref<boolean>(false);
-const showCard = ref<boolean>(false);
-const showModal = ref<boolean>(false);
-const selectedCards = ref<TaroCard[]>([]);
-
-const handleCardsSelected = (selected: number[]) => {
-  selectedCards.value = GetTaroCardByid(selected);
-  getAIResponse();
-};
-
-const abortController = ref<AbortController | null>(null);
-
-const getAIResponse = async () => {
-  if (!MyInput.value) {
-    return;
-  }
-  loading.value = true;
-  answer.value = '';
-  showModal.value = true;
-  const FirstCardPrompt: string = `我抽到的第一张塔罗牌是${selectedCards.value[0].name},他的寓意是${selectedCards.value[0].mean};`;
-  const SecondCardPrompt: string = `我抽到的第二张塔罗牌是${selectedCards.value[1].name},他的寓意是${selectedCards.value[1].mean};`;
-  const ThirdCardPrompt: string = `我抽到的第三张塔罗牌是${selectedCards.value[2].name},他的寓意是${selectedCards.value[2].mean};`;
-  const AllPrompt: string = `${FirstCardPrompt}${SecondCardPrompt}${ThirdCardPrompt},问题是:${MyInput.value}`;
-
-  abortController.value = new AbortController();
-
-  try {
-    const stream = await openai.chat.completions.create(
-      {
-        model: 'deepseek-ai/DeepSeek-V2.5',
-        messages: [
-          { role: 'system', content: SystemPrompt },
-          { role: 'user', content: AllPrompt }
-        ],
-        stream: true
-      },
-      { signal: abortController.value.signal }
-    );
-
-    for await (const chunk of stream) {
-      if (chunk.choices[0]?.delta?.content) {
-        answer.value += chunk.choices[0].delta.content;
-      }
-    }
-  } catch (error) {
-    console.error('获取AI传输流失败:', error);
-  } finally {
-    loading.value = false;
-    abortController.value = null;
-  }
-};
-
-const handleModalClose = () => {
-  if (abortController.value) {
-    abortController.value.abort();
-  }
-  loading.value = false;
+const isDarkMode = ref(false);
+const toggleDarkMode = () => {
+  isDarkMode.value = !isDarkMode.value;
 };
 </script>
 
 <template>
-  <n-config-provider :theme="darkTheme">
-    <n-global-style />
-    <div class="container">
-      <n-gradient-text type="info" :size="32" style="font-weight: bolder"> CAU塔罗牌魔法屋 </n-gradient-text>
+  <div class="min-h-screen bg-gray-50 dark:bg-gray-900">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <!-- Header -->
+      <header class="flex items-center justify-between py-4">
+        <div class="flex items-center">
+          <button class="flex items-center text-lg font-bold"><span class="mr-1 text-xl">◉</span> Tarotap</button>
+        </div>
 
-      <n-input v-model:value="MyInput" placeholder="接受指引吧" style="max-width: 60%" />
+        <nav class="hidden items-center space-x-4 md:flex">
+          <a href="#" class="flex items-center rounded-full bg-gray-100 px-3 py-2 dark:bg-gray-800">
+            <Crown class="mr-1 h-4 w-4 text-yellow-500" />
+            <span class="text-sm">会员订阅</span>
+          </a>
+          <a href="#" class="px-3 py-2">AI塔罗占卜</a>
+          <a href="#" class="px-3 py-2">塔古塔罗占卜</a>
+          <div class="group relative">
+            <button class="flex items-center px-3 py-2">
+              塔罗运势
+              <ChevronDown class="ml-1 h-4 w-4" />
+            </button>
+          </div>
+          <div class="group relative">
+            <button class="flex items-center px-3 py-2">
+              学习
+              <ChevronDown class="ml-1 h-4 w-4" />
+            </button>
+          </div>
+          <a href="#" class="px-3 py-2">问题反馈</a>
+          <a href="#" class="px-3 py-2">真人塔罗占卜</a>
+        </nav>
 
-      <n-button :loading="loading" type="primary" @click="showCard = true">提交问题> </n-button>
+        <div class="flex items-center space-x-4">
+          <button @click="toggleDarkMode" class="rounded-full p-2">
+            <Moon v-if="!isDarkMode" class="h-5 w-5" />
+            <Sun v-else class="h-5 w-5" />
+          </button>
+          <div class="flex h-8 w-8 items-center justify-center rounded-full bg-gradient-to-r from-purple-400 to-pink-500 text-white">
+            <User class="h-5 w-5" />
+          </div>
+        </div>
+      </header>
 
-      <Card @cardsSelected="handleCardsSelected" v-show="showCard" />
+      <!-- Main Content -->
+      <main class="flex flex-col items-center py-12">
+        <div class="mx-auto mb-12 max-w-2xl text-center">
+          <h1 class="mb-1 text-4xl font-bold">
+            <span class="text-pink-500">输入您的</span>
+            <div class="text-black dark:text-white">塔罗牌问题</div>
+          </h1>
+          <p class="text-gray-600 dark:text-gray-400">您想占卜什么问题？</p>
+        </div>
+
+        <!-- Question Input -->
+        <div class="mx-auto mb-8 w-full max-w-2xl">
+          <div class="relative">
+            <textarea
+              v-model="questionInput"
+              placeholder="输入您想占卜的问题"
+              class="h-32 w-full rounded-lg border bg-white p-4 pr-10 focus:ring-2 focus:ring-pink-500 focus:outline-none dark:border-gray-700 dark:bg-gray-800 dark:text-white"
+              :maxlength="maxChars"></textarea>
+            <button class="absolute top-4 right-4 cursor-pointer text-gray-400 hover:text-gray-600">
+              <Search class="h-6 w-6" />
+            </button>
+            <div class="mt-1 text-right text-sm text-gray-500">{{ charCount }}/{{ maxChars }}</div>
+          </div>
+        </div>
+
+        <!-- Sample Questions -->
+        <div class="mx-auto grid w-full max-w-2xl grid-cols-1 gap-4 md:grid-cols-2">
+          <div
+            v-for="(question, index) in sampleQuestions"
+            :key="index"
+            @click="questionInput = question.text"
+            class="cursor-pointer rounded-lg bg-gray-100 p-4 transition hover:bg-gray-200 dark:bg-gray-800 dark:hover:bg-gray-700">
+            <div class="flex items-center space-x-2">
+              <span class="text-lg">{{ question.icon }}</span>
+              <span class="text-sm text-gray-800 dark:text-gray-300">{{ question.text }}</span>
+            </div>
+          </div>
+        </div>
+      </main>
     </div>
-
-    <n-modal v-model:show="showModal" preset="card" title="塔罗师说:" size="huge" :on-after-leave="handleModalClose" class="answer-model">
-      <p class="taroAnswer" style="text-indent: 2em; font-weight: 400">
-        {{ answer }}
-      </p>
-      <template #header-extra> 继续出发吧! </template>
-    </n-modal>
-  </n-config-provider>
+  </div>
 </template>
 
-<style scoped>
-.container {
-  margin: 1rem auto;
-  max-width: 90%;
-  align-items: center;
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-}
-</style>
-
 <style>
-.answer-model {
-  max-width: 60% !important;
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
 }
 
-@media (max-width: 768px) {
-  .answer-model {
-    max-width: 90% !important;
-  }
+.dark {
+  color-scheme: dark;
 }
 </style>

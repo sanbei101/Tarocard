@@ -149,7 +149,9 @@ const emit = defineEmits<{
     position: relative;
     width: 70vw;
     height: 40vw;
-    transition: transform 0.5s, margin-bottom 0.5s;
+    transition:
+      transform 0.5s,
+      margin-bottom 0.5s;
     margin-bottom: -80px;
   }
 

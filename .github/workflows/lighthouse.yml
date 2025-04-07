@@ -17,7 +17,7 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 22
-          
+
       - name: Install dependencies using pnpm
         run: |
           npm install -g pnpm
