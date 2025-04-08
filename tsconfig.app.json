@@ -7,6 +7,7 @@
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true,
+    "noImplicitAny": true,
     "noUncheckedSideEffectImports": true,
     "baseUrl": ".",
     "paths": {
