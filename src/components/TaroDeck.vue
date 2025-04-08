@@ -55,7 +55,7 @@
       </button>
     </div>
 
-    <Answer v-if="isShowAnswer" :selectedCards="selectedCards" :question="'我帅吗?'" />
+    <Answer v-if="isShowAnswer" :selectedCards="selectedCards" />
   </div>
 </template>
 

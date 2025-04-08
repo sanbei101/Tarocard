@@ -4,8 +4,8 @@ import { Search, ChevronDown, Moon, Sun, User, Crown } from 'lucide-vue-next';
 import { computed } from 'vue';
 import { useRouter } from 'vue-router';
 import { RouteNames } from '@/router';
-const questionInput = ref<string>('');
-const charCount = computed(() => questionInput.value.length);
+import { useAppStore } from '@/store';
+const charCount = computed(() => appStore.userQuestion.length);
 const maxChars = 300;
 const sampleQuestions = [
   { icon: '🔍', text: '这段缘分是未完待续...还是终将散场?' },
@@ -25,6 +25,7 @@ const getAnswer = () => {
 };
 
 const router = useRouter();
+const appStore = useAppStore();
 </script>
 
 <template>
@@ -90,7 +91,7 @@ const router = useRouter();
         <div class="mx-auto mb-8 w-full max-w-4xl">
           <div class="relative">
             <textarea
-              v-model="questionInput"
+              v-model="appStore.userQuestion"
               placeholder="输入您想占卜的问题"
               class="h-32 w-full rounded-lg bg-gray-100 p-4 pr-10 transition-colors duration-500 outline-none hover:bg-gray-200"
               :maxlength="maxChars"></textarea>
@@ -110,7 +111,7 @@ const router = useRouter();
           <div
             v-for="(question, index) in sampleQuestions"
             :key="index"
-            @click="questionInput = question.text"
+            @click="appStore.userQuestion = question.text"
             class="cursor-pointer rounded-lg bg-gray-100 p-4 transition hover:bg-gray-200 dark:bg-gray-800 dark:hover:bg-gray-700">
             <div class="flex items-center space-x-2">
               <span class="text-lg">{{ question.icon }}</span>

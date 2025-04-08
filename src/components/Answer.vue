@@ -14,7 +14,7 @@
     <!-- 问题展示 -->
     <div class="mb-8 rounded-lg bg-indigo-50 p-4 shadow-sm">
       <h2 class="mb-2 text-lg font-semibold text-indigo-800">你的问题:</h2>
-      <p class="text-gray-700">{{ question || '未提供具体问题' }}</p>
+      <p class="text-gray-700">{{ appStore.userQuestion || '未提供具体问题' }}</p>
     </div>
 
     <!-- AI解读结果 -->
@@ -70,20 +70,18 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted, computed } from 'vue';
+import { ref, onMounted } from 'vue';
 import { ArrowLeft, Sparkles, RefreshCw, Loader2 } from 'lucide-vue-next';
 import type { TaroCard } from '@/utils/const';
+import { useAppStore } from '@/store';
+
+const appStore = useAppStore();
 
 const props = defineProps<{
   selectedCards: TaroCard[];
-  question: string;
 }>();
 
 const emit = defineEmits(['back']);
-
-const question = computed(() => {
-  return props.question;
-});
 
 const isLoading = ref(true);
 const interpretation = ref<string[]>([]);
