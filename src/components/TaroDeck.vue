@@ -9,7 +9,6 @@
         :z-index="index"
         :selected="selectedCards.some((c) => c.id === card.id)"
         :disabled="isSelectionComplete && !selectedCards.some((c) => c.id === card.id)"
-        :revealed="false"
         @select="selectCard"
         :style="{
           position: 'absolute',
@@ -31,8 +30,7 @@
               :z-index="1"
               :selected="true"
               :disabled="false"
-              :revealed="true"
-              @select="() => {}"
+              @select="selectCard"
               class="translate-y-0 transform" />
           </div>
           <span v-else class="text-indigo-300">牌 #{{ i }}</span>

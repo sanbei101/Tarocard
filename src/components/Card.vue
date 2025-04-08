@@ -10,7 +10,7 @@
       class="card-inner flex h-56 w-36 items-center justify-center rounded-lg shadow-md"
       :class="[selected ? 'border-2 border-indigo-500 bg-indigo-100' : 'bg-purple-900']">
       <transition name="fade-flip" mode="out-in">
-        <div v-if="selected || revealed" key="front" class="card-front text-center">
+        <div v-if="selected" key="front" class="card-front text-center">
           <h3 class="text-lg font-bold text-indigo-800">{{ card.name }}</h3>
           <div class="mt-2">
             <component :is="card.image" class="mx-auto h-24 w-24 object-contain" />
@@ -41,7 +41,6 @@ const props = defineProps<{
   zIndex: number;
   selected: boolean;
   disabled: boolean;
-  revealed: boolean;
 }>();
 
 const emit = defineEmits<{
