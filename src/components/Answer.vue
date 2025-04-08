@@ -74,6 +74,7 @@ import { ref, onMounted } from 'vue';
 import { ArrowLeft, Sparkles, RefreshCw, Loader2 } from 'lucide-vue-next';
 import type { TaroCard } from '@/utils/const';
 import { useAppStore } from '@/store';
+import { openai } from '@/utils/openai';
 
 const appStore = useAppStore();
 
@@ -95,59 +96,118 @@ const generateInterpretation = async () => {
   isLoading.value = true;
 
   try {
-    // 模拟AI生成解读的过程
-    await new Promise((resolve) => setTimeout(resolve, 2000));
+    const question = appStore.userQuestion || '未提供具体问题';
 
-    // 为每张卡片生成解读
-    interpretation.value = props.selectedCards.map((card) => {
-      return `<p>这张${card.name}在你当前的情境中代表着${getRandomElement(interpretationTemplates)}</p>
-      <p>它提示你${getRandomElement(adviceTemplates)}</p>`;
-    });
+    // 为每张卡片单独生成解读
+    const cardInterpretations = await Promise.all(
+      props.selectedCards.map(async (card, index) => {
+        const prompt = `你是一位专业的塔罗牌解读师。请为以下塔罗牌提供深入、富有洞察力的解读:
+        
+        问题: ${question}
+        
+        卡片信息:
+        名称: ${card.name}
+        正位含义: ${card.positive}
+        逆位含义: ${card.negative}
+        卡片位置: ${index + 1}
+        
+        请提供一段100字左右的解读,包括这张牌在当前问题情境中的含义以及给提问者的建议。使用通俗易懂的语言,让人有启发性,并保持神秘感。
+        只返回解读内容,不需要添加任何前缀或标题。将内容格式化为HTML段落。`;
+
+        const response = await openai.chat.completions.create({
+          model: 'Qwen/Qwen2.5-7B-Instruct',
+          messages: [{ role: 'user', content: prompt }],
+          temperature: 0.7
+        });
+
+        return response.choices[0].message.content || '无法生成解读';
+      })
+    );
+
+    interpretation.value = cardInterpretations;
 
     // 生成综合解读
-    overallInterpretation.value = `<p>从整体上看，这次占卜显示${getRandomElement(overallTemplates)}</p>
-    <p>在未来的日子里，你可能需要${getRandomElement(futureTemplates)}</p>
-    <p>最重要的是要记住：${getRandomElement(wisdomTemplates)}</p>`;
+    const overallPrompt = `你是一位专业的塔罗牌解读师。请基于以下信息提供一个综合的塔罗占卜解读:
+    
+    问题: ${question}
+    
+    选择的牌:
+    ${props.selectedCards
+      .map(
+        (card, i) =>
+          `卡片${i + 1}: ${card.name}（正位含义: ${card.positive},逆位含义: ${card.negative})`
+      )
+      .join('\n')}
+    
+    请提供一个200-300字的综合解读,分析这些卡片如何相互关联,以及对提问者问题的整体启示。
+    解读应该包括:
+    1. 当前状况的总体分析
+    2. 未来的可能发展
+    3. 富有智慧的建议
+    
+    使用通俗易懂的语言,让人感到温暖、有启发性,并保持神秘感。
+    只返回解读内容,不需要添加任何前缀或标题。将内容格式化为HTML段落。`;
+
+    const overallResponse = await openai.chat.completions.create({
+      model: 'Qwen/Qwen2.5-7B-Instruct',
+      messages: [{ role: 'user', content: overallPrompt }],
+      temperature: 0.7
+    });
+
+    overallInterpretation.value = overallResponse.choices[0].message.content || '无法生成综合解读';
   } catch (error) {
     console.error('生成解读失败:', error);
+    // 如果API调用失败,使用备用的随机解读
+    fallbackRandomInterpretation();
   } finally {
     isLoading.value = false;
   }
 };
 
+// 备用随机解读函数,当API调用失败时使用
+const fallbackRandomInterpretation = () => {
+  interpretation.value = props.selectedCards.map((card) => {
+    return `<p>这张${card.name}在你当前的情境中代表着${getRandomElement(interpretationTemplates)}</p>
+    <p>它提示你${getRandomElement(adviceTemplates)}</p>`;
+  });
+
+  overallInterpretation.value = `<p>从整体上看,这次占卜显示${getRandomElement(overallTemplates)}</p>
+  <p>在未来的日子里,你可能需要${getRandomElement(futureTemplates)}</p>
+  <p>最重要的是要记住：${getRandomElement(wisdomTemplates)}</p>`;
+};
 const goBack = () => {
   emit('back');
 };
 
-// 模板文本，实际应用中应该由AI生成
+// 模板文本,实际应用中应该由AI生成
 const interpretationTemplates = [
-  '内在的力量与潜能，你需要相信自己的直觉和能力',
-  '当前面临的挑战与障碍，这是一个需要耐心和毅力的时期',
-  '转变与新机会，宇宙正在为你打开新的大门',
-  '过去经历的影响，它提醒你从历史中汲取智慧',
-  '内心深处的渴望与恐惧，需要你勇敢面对'
+  '内在的力量与潜能,你需要相信自己的直觉和能力',
+  '当前面临的挑战与障碍,这是一个需要耐心和毅力的时期',
+  '转变与新机会,宇宙正在为你打开新的大门',
+  '过去经历的影响,它提醒你从历史中汲取智慧',
+  '内心深处的渴望与恐惧,需要你勇敢面对'
 ];
 
 const adviceTemplates = [
-  '保持开放的心态，接受变化并从中学习成长',
-  '信任你的直觉，它正引导你走向正确的方向',
-  '放下对结果的执着，专注于当下的过程',
-  '重新评估你的优先事项，确保它们与你的真实价值观一致',
-  '寻求平衡，不要让单一领域占据你全部的注意力'
+  '保持开放的心态,接受变化并从中学习成长',
+  '信任你的直觉,它正引导你走向正确的方向',
+  '放下对结果的执着,专注于当下的过程',
+  '重新评估你的优先事项,确保它们与你的真实价值观一致',
+  '寻求平衡,不要让单一领域占据你全部的注意力'
 ];
 
 const overallTemplates = [
-  '你正处于重要的转折点，即将迎来显著的成长机会',
+  '你正处于重要的转折点,即将迎来显著的成长机会',
   '当前的挑战是为了锻炼你的韧性和适应能力',
-  '你的直觉比想象中更加准确，值得更多信任',
-  '过去的经验为你提供了宝贵的智慧，现在是应用它们的时候',
-  '你正走在正确的道路上，尽管可能暂时看不到全局'
+  '你的直觉比想象中更加准确,值得更多信任',
+  '过去的经验为你提供了宝贵的智慧,现在是应用它们的时候',
+  '你正走在正确的道路上,尽管可能暂时看不到全局'
 ];
 
 const futureTemplates = [
   '更加关注自我照顾和内在平静',
   '在关键决策前深度反思和冥想',
-  '勇敢尝试新事物，扩展你的舒适区',
+  '勇敢尝试新事物,扩展你的舒适区',
   '加强与重要人物的沟通与连接',
   '重新评估你的长期目标和生活方向'
 ];
@@ -156,8 +216,8 @@ const wisdomTemplates = [
   '真正的力量来自于自我接纳与内在平静',
   '每一个挑战都是宇宙赐予的一份礼物',
   '人生的旅程比目的地更重要',
-  '倾听内心的声音，它知道什么对你是最好的',
-  '改变始于接受现实，而不是抗拒它'
+  '倾听内心的声音,它知道什么对你是最好的',
+  '改变始于接受现实,而不是抗拒它'
 ];
 
 function getRandomElement<T>(array: T[]): T {
