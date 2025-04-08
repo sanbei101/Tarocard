@@ -1,7 +1,7 @@
 <template>
   <div class="flex flex-col items-center">
     <h1 class="mb-6 text-2xl font-bold text-indigo-800">选择五张塔罗牌</h1>
-    <div class="relative mb-10 h-120 w-full max-w-4xl overflow-auto">
+    <div class="relative mb-10 h-120 w-full max-w-4xl overflow-auto" ref="deckContainer">
       <Card
         v-for="(card, index) in taroCards"
         :key="card.id"
@@ -60,12 +60,16 @@
 </template>
 
 <script setup lang="ts">
-import { ref, computed } from 'vue';
+import { ref, computed, useTemplateRef } from 'vue';
 import Card from '@/components/Card.vue';
 import Answer from '@/components/Answer.vue';
 import type { TaroCard } from '@/utils/const';
 import { RefreshCw, Check } from 'lucide-vue-next';
 import { taroCards } from '@/utils/const';
+import { useElementSize } from '@vueuse/core';
+
+const deckContainer = useTemplateRef('deckContainer');
+
 const MaxSelection = 5;
 
 const selectedCards = ref<TaroCard[]>([]);
@@ -82,12 +86,18 @@ const selectCard = (card: TaroCard) => {
   }
 };
 
+const { width, height } = useElementSize(deckContainer);
 const getRandomPosition = (index: number, axis: 'x' | 'y') => {
+  if (!width || !height) return 0;
+
   // 使用索引确保每次位置一致，同时添加一些随机性
   const seed = index * 1372 + (axis === 'x' ? 762 : 891);
   const random = Math.sin(seed) * 10000;
-  const range = axis === 'x' ? 500 : 300;
-  const base = axis === 'x' ? 50 : 50;
+
+  // 根据容器大小动态调整范围
+  const base = 50; // 边距
+  const range = axis === 'x' ? width.value - base : height.value - base; // 减去边距
+
   return base + (random - Math.floor(random)) * range;
 };
 
