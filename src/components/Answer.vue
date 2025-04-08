@@ -39,8 +39,8 @@
               <component :is="card.image" :alt="card.name" class="h-auto w-full rounded-sm" />
             </div>
             <div class="text-sm text-gray-600">
-              <p class="mb-1"><span class="font-medium">正位含义:</span> {{ card.meaning }}</p>
-              <p><span class="font-medium">逆位含义:</span> {{ card.meaning }}</p>
+              <p class="mb-2"><span class="font-bold">正位含义:</span> {{ card.positive }}</p>
+              <p><span class="font-bold">逆位含义:</span> {{ card.negative }}</p>
             </div>
           </div>
           <div class="text-gray-700" v-html="interpretation[index]"></div>
@@ -72,7 +72,7 @@
 <script setup lang="ts">
 import { ref, onMounted, computed } from 'vue';
 import { ArrowLeft, Sparkles, RefreshCw, Loader2 } from 'lucide-vue-next';
-import type { TaroCard } from '@/components/Card.vue';
+import type { TaroCard } from '@/utils/const';
 
 const props = defineProps<{
   selectedCards: TaroCard[];

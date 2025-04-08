@@ -63,7 +63,7 @@
 import { ref, computed } from 'vue';
 import Card from '@/components/Card.vue';
 import Answer from '@/components/Answer.vue';
-import type { TaroCard } from '@/components/Card.vue';
+import type { TaroCard } from '@/utils/const';
 import { RefreshCw, Check } from 'lucide-vue-next';
 import { taroCards } from '@/utils/const';
 const MaxSelection = 5;

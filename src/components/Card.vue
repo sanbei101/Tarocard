@@ -27,14 +27,9 @@
 </template>
 
 <script setup lang="ts">
-import { defineEmits, type FunctionalComponent } from 'vue';
-import { Star as StarIcon, type LucideProps } from 'lucide-vue-next';
-export interface TaroCard {
-  id: number;
-  name: string;
-  image: FunctionalComponent<LucideProps>;
-  meaning?: string;
-}
+import { defineEmits } from 'vue';
+import { Star as StarIcon } from 'lucide-vue-next';
+import type { TaroCard } from '@/utils/const';
 
 const props = defineProps<{
   card: TaroCard;
