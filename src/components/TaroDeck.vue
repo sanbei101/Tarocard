@@ -2,7 +2,7 @@
   <div class="flex flex-col items-center">
     <h1 class="mb-6 text-2xl font-bold text-indigo-800">选择五张塔罗牌</h1>
     <div class="relative mb-10 h-120 w-full max-w-4xl overflow-auto">
-      <card
+      <Card
         v-for="(card, index) in taroCards"
         :key="card.id"
         :card="card"
@@ -26,7 +26,7 @@
         class="flex h-56 min-w-36 items-center justify-center rounded-lg border-2 border-dashed border-indigo-300">
         <Transition name="fade-flip" mode="out-in">
           <div v-if="selectedCards[i - 1]">
-            <card
+            <Card
               :card="selectedCards[i - 1]"
               :z-index="1"
               :selected="true"
@@ -61,9 +61,9 @@
 
 <script setup lang="ts">
 import { ref, computed } from 'vue';
-import Card from './Card.vue';
+import Card from '@/components/Card.vue';
+import type { TaroCard } from '@/components/Card.vue';
 import { RefreshCw, Check } from 'lucide-vue-next';
-import type { TaroCard } from './Card.vue';
 import { taroCards } from '@/utils/const';
 const MaxSelection = 5;
 
