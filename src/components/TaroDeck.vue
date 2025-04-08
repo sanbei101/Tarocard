@@ -41,15 +41,15 @@
     <div>
       <button
         @click="resetSelection"
-        class="cursor-pointer rounded-md bg-indigo-600 px-4 py-2 text-white hover:bg-indigo-700"
+        class="cursor-pointer rounded-md bg-indigo-600 px-4 py-2 text-white hover:bg-indigo-700 disabled:cursor-not-allowed disabled:bg-gray-400 disabled:text-gray-200"
         :disabled="selectedCards.length === 0">
         <RefreshCw class="mr-1 inline-block h-4 w-4" />
         重新选择
       </button>
       <button
         @click="confirmSelection"
-        class="ml-4 cursor-pointer rounded-md bg-green-600 px-4 py-2 text-white hover:bg-green-700"
-        :disabled="!isSelectionComplete">
+        class="ml-4 cursor-pointer rounded-md bg-green-600 px-4 py-2 text-white hover:bg-green-700 disabled:cursor-not-allowed disabled:bg-gray-400 disabled:text-gray-200"
+        :disabled="!isSelectionComplete || isShowAnswer">
         <Check class="mr-1 inline-block h-4 w-4" />
         确认选择
       </button>
@@ -138,6 +138,7 @@ const getRandomRotation = (index: number) => {
 
 const resetSelection = () => {
   selectedCards.value = [];
+  isShowAnswer.value = false;
 };
 
 const confirmSelection = () => {
