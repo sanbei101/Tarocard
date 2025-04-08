@@ -41,25 +41,28 @@
     <div>
       <button
         @click="resetSelection"
-        class="rounded-md bg-indigo-600 px-4 py-2 text-white hover:bg-indigo-700"
+        class="cursor-pointer rounded-md bg-indigo-600 px-4 py-2 text-white hover:bg-indigo-700"
         :disabled="selectedCards.length === 0">
         <RefreshCw class="mr-1 inline-block h-4 w-4" />
         重新选择
       </button>
       <button
         @click="confirmSelection"
-        class="ml-4 rounded-md bg-green-600 px-4 py-2 text-white hover:bg-green-700"
+        class="ml-4 cursor-pointer rounded-md bg-green-600 px-4 py-2 text-white hover:bg-green-700"
         :disabled="!isSelectionComplete">
         <Check class="mr-1 inline-block h-4 w-4" />
         确认选择
       </button>
     </div>
+
+    <Answer v-if="isShowAnswer" :selectedCards="selectedCards" :question="'我帅吗?'" />
   </div>
 </template>
 
 <script setup lang="ts">
 import { ref, computed } from 'vue';
 import Card from '@/components/Card.vue';
+import Answer from '@/components/Answer.vue';
 import type { TaroCard } from '@/components/Card.vue';
 import { RefreshCw, Check } from 'lucide-vue-next';
 import { taroCards } from '@/utils/const';
@@ -67,6 +70,7 @@ const MaxSelection = 5;
 
 const selectedCards = ref<TaroCard[]>([]);
 const isSelectionComplete = computed(() => selectedCards.value.length === MaxSelection);
+const isShowAnswer = ref(false);
 
 const selectCard = (card: TaroCard) => {
   if (selectedCards.value.some((c) => c.id === card.id)) {
@@ -100,8 +104,7 @@ const resetSelection = () => {
 
 const confirmSelection = () => {
   if (isSelectionComplete.value) {
-    alert(`你选择的塔罗牌: ${selectedCards.value.map((c) => c.name).join(', ')}`);
-    // 在实际应用中，这里可以发送选择结果到后端或进行其他操作
+    isShowAnswer.value = true;
   }
 };
 </script>
