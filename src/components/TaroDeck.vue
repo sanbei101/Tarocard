@@ -87,18 +87,46 @@ const selectCard = (card: TaroCard) => {
 };
 
 const { width, height } = useElementSize(deckContainer);
+// 使用网格布局算法来均匀分布卡牌
 const getRandomPosition = (index: number, axis: 'x' | 'y') => {
-  if (!width || !height) return 0;
+  if (!width.value || !height.value) return 0;
 
-  // 使用索引确保每次位置一致，同时添加一些随机性
+  // 定义网格大小和边距
+  const margin = 80; // 卡片边距
+  const cardWidth = 144; // 卡片宽度近似值
+  const cardHeight = 224; // 卡片高度近似值
+
+  // 计算可用空间
+  const availableWidth = width.value - margin * 2;
+  const availableHeight = height.value - margin * 2;
+
+  // 计算网格列数和行数 (动态计算基于容器尺寸)
+  const cols = Math.max(3, Math.floor(availableWidth / cardWidth));
+  const rows = Math.max(3, Math.floor(availableHeight / cardHeight));
+
+  // 计算每个网格单元的大小
+  const cellWidth = availableWidth / cols;
+  const cellHeight = availableHeight / rows;
+
+  // 将索引映射到网格位置
+  const col = index % cols;
+  const row = Math.floor(index / cols) % rows;
+
+  // 计算基础位置 (网格中心)
+  const baseX = margin + col * cellWidth + cellWidth / 2 - cardWidth / 2;
+  const baseY = margin + row * cellHeight + cellHeight / 2 - cardHeight / 2;
+
+  // 添加随机偏移量，但不要太大以避免重叠
   const seed = index * 1372 + (axis === 'x' ? 762 : 891);
   const random = Math.sin(seed) * 10000;
+  const jitter = random - Math.floor(random);
 
-  // 根据容器大小动态调整范围
-  const base = 50; // 边距
-  const range = axis === 'x' ? width.value - base : height.value - base; // 减去边距
+  // 每个格子内的随机偏移量，但不超过单元格的1/3
+  const offsetRange = axis === 'x' ? cellWidth / 3 : cellHeight / 3;
+  const offset = jitter * offsetRange - offsetRange / 2;
 
-  return base + (random - Math.floor(random)) * range;
+  // 最终位置
+  return axis === 'x' ? baseX + offset : baseY + offset;
 };
 
 const getRandomRotation = (index: number) => {
