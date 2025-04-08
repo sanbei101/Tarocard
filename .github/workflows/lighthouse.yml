@@ -1,7 +1,6 @@
 name: lighthouse-test
 
 on:
-  push:
   workflow_dispatch:
 
 jobs:
