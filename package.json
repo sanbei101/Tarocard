@@ -13,7 +13,7 @@
     "@vueuse/core": "^13.1.0",
     "lucide-vue-next": "^0.501.0",
     "openai": "^4.91.1",
-    "pinia": "^3.0.1",
+    "pinia": "^3.0.3",
     "prettier": "^3.5.3",
     "prettier-plugin-tailwindcss": "^0.6.11",
     "tailwindcss": "^4.1.3",
