@@ -15,8 +15,8 @@ importers:
         specifier: ^13.1.0
         version: 13.1.0(vue@3.5.13(typescript@5.8.3))
       lucide-vue-next:
-        specifier: ^0.501.0
-        version: 0.501.0(vue@3.5.13(typescript@5.8.3))
+        specifier: ^0.513.0
+        version: 0.513.0(vue@3.5.13(typescript@5.8.3))
       openai:
         specifier: ^4.91.1
         version: 4.91.1
@@ -1208,8 +1208,8 @@ packages:
   lru-cache@5.1.1:
     resolution: {integrity: sha512-KpNARQA3Iwv+jTA0utUVVbrh+Jlrr1Fv0e56GGzAFOXN7dk/FviaDW8LHmK52DlcH4WP2n6gI8vN1aesBFgo9w==}
 
-  lucide-vue-next@0.501.0:
-    resolution: {integrity: sha512-SFOkh2YFQYQjg5+jJH4F1aC7JvjrrRmNVGQnWkTUb6chkTFmUteMDf7lJFe2SKoOv10RRT1xLFYNKJiAXzeOeA==}
+  lucide-vue-next@0.513.0:
+    resolution: {integrity: sha512-/J7DB2WBC+UPcRswOfJFXSWt8r5HTMVu0PRkR6e0+Ozx6kLJZv4m71vbT1DS9RCjj0pfuLskWIslSBeeXmg7BA==}
     peerDependencies:
       vue: '>=3.0.1'
 
@@ -2692,7 +2692,7 @@ snapshots:
     dependencies:
       yallist: 3.1.1
 
-  lucide-vue-next@0.501.0(vue@3.5.13(typescript@5.8.3)):
+  lucide-vue-next@0.513.0(vue@3.5.13(typescript@5.8.3)):
     dependencies:
       vue: 3.5.13(typescript@5.8.3)
 
