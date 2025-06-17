@@ -28,6 +28,6 @@
     "vite": "^6.3.2",
     "vite-plugin-compression": "^0.5.1",
     "vite-plugin-vue-devtools": "^7.7.7",
-    "vue-tsc": "^2.2.8"
+    "vue-tsc": "^2.2.10"
   }
 }
