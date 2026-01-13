@@ -124,7 +124,7 @@ const generateInterpretation = async () => {
           temperature: 0.7
         });
 
-        return response.choices[0].message.content || '无法生成解读';
+        return response.choices[0]?.message?.content || '无法生成解读';
       })
     );
 
@@ -158,7 +158,7 @@ const generateInterpretation = async () => {
       temperature: 0.7
     });
 
-    overallInterpretation.value = overallResponse.choices[0].message.content || '无法生成综合解读';
+    overallInterpretation.value = overallResponse.choices[0]?.message?.content || '无法生成综合解读';
   } catch (error) {
     console.error('生成解读失败:', error);
     const { interpretations, overall } = fallbackInterpretation(props.selectedCards);

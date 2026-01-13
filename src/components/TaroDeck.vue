@@ -26,7 +26,7 @@
         <Transition name="fade-flip" mode="out-in">
           <div v-if="selectedCards[i - 1]">
             <Card
-              :card="selectedCards[i - 1]"
+              :card="selectedCards[i - 1]!"
               :z-index="1"
               :selected="true"
               :disabled="false"

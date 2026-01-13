@@ -71,5 +71,5 @@ const wisdomTemplates = [
 ];
 
 function getRandomElement<T>(array: T[]): T {
-  return array[Math.floor(Math.random() * array.length)];
+  return array[Math.floor(Math.random() * array.length)] as T;
 }

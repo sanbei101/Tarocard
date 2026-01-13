@@ -27,7 +27,6 @@
 </template>
 
 <script setup lang="ts">
-import { defineEmits } from 'vue';
 import { Star as StarIcon } from 'lucide-vue-next';
 import type { TaroCard } from '@/utils/const';
 
