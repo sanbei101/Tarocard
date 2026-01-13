@@ -9,25 +9,25 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@tailwindcss/vite": "^4.1.10",
-    "@vueuse/core": "^13.6.0",
-    "lucide-vue-next": "^0.514.0",
-    "openai": "^5.8.2",
-    "pinia": "^3.0.3",
-    "prettier": "^3.5.3",
-    "prettier-plugin-tailwindcss": "^0.6.11",
-    "tailwindcss": "^4.1.14",
-    "vue": "^3.5.13",
-    "vue-router": "4"
+    "@tailwindcss/vite": "^4.1.18",
+    "@vueuse/core": "^14.1.0",
+    "lucide-vue-next": "^0.562.0",
+    "openai": "^6.16.0",
+    "pinia": "^3.0.4",
+    "prettier": "^3.7.4",
+    "prettier-plugin-tailwindcss": "^0.7.2",
+    "tailwindcss": "^4.1.18",
+    "vue": "^3.5.26",
+    "vue-router": "^4.6.4"
   },
   "devDependencies": {
-    "@vitejs/plugin-vue": "^5.2.3",
-    "@vue/tsconfig": "^0.7.0",
-    "naive-ui": "^2.41.0",
-    "typescript": "~5.8.3",
-    "vite": "^6.3.2",
+    "@vitejs/plugin-vue": "^6.0.3",
+    "@vue/tsconfig": "^0.8.1",
+    "naive-ui": "^2.43.2",
+    "typescript": "~5.9.3",
+    "vite": "^7.3.1",
     "vite-plugin-compression": "^0.5.1",
-    "vite-plugin-vue-devtools": "^8.0.0",
-    "vue-tsc": "^3.0.0"
+    "vite-plugin-vue-devtools": "^8.0.5",
+    "vue-tsc": "^3.2.2"
   }
 }
