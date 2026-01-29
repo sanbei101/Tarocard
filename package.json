@@ -12,7 +12,7 @@
     "@tailwindcss/vite": "^4.1.18",
     "@vueuse/core": "^14.1.0",
     "lucide-vue-next": "^0.562.0",
-    "openai": "^6.16.0",
+    "openai": "^6.17.0",
     "pinia": "^3.0.4",
     "prettier": "^3.8.1",
     "prettier-plugin-tailwindcss": "^0.7.2",
