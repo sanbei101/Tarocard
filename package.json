@@ -11,7 +11,7 @@
   "dependencies": {
     "@tailwindcss/vite": "^4.2.2",
     "@vueuse/core": "^14.2.1",
-    "lucide-vue-next": "^0.577.0",
+    "lucide-vue-next": "^1.0.0",
     "openai": "^6.32.0",
     "pinia": "^3.0.4",
     "prettier": "^3.8.1",
