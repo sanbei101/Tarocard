@@ -10,7 +10,7 @@
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.2.4",
-    "@vueuse/core": "^14.2.1",
+    "@vueuse/core": "^14.3.0",
     "lucide-vue-next": "^1.0.0",
     "openai": "^6.35.0",
     "pinia": "^3.0.4",
