@@ -18,8 +18,8 @@ importers:
         specifier: ^1.0.0
         version: 1.0.0(vue@3.5.26(typescript@6.0.3))
       openai:
-        specifier: ^6.41.0
-        version: 6.41.0
+        specifier: ^6.42.0
+        version: 6.42.0
       pinia:
         specifier: ^3.0.4
         version: 3.0.4(typescript@6.0.3)(vue@3.5.26(typescript@6.0.3))
@@ -1181,8 +1181,8 @@ packages:
     resolution: {integrity: sha512-YgBpdJHPyQ2UE5x+hlSXcnejzAvD0b22U2OuAP+8OnlJT+PjWPxtgmGqKKc+RgTM63U9gN0YzrYc71R2WT/hTA==}
     engines: {node: '>=18'}
 
-  openai@6.41.0:
-    resolution: {integrity: sha512-IGWPopZq6Rjoynjfb3NSLf/z2MTw7UiOsm9TAjPGAjUESH7Uq41Trg4QWehBEn58p74i+m7uoRPV2vXcpPXhyA==}
+  openai@6.42.0:
+    resolution: {integrity: sha512-1WFEt/uXMXOLhYRNkgJWo08Y2YNvNwpVU72K7ibrWgWpNOXd4VojXLbe6SQ4bLiUQ3Y8jz4IiyVkylJCL1DtZg==}
     peerDependencies:
       ws: ^8.18.0
       zod: ^3.25 || ^4.0
@@ -2583,7 +2583,7 @@ snapshots:
       is-inside-container: 1.0.0
       wsl-utils: 0.1.0
 
-  openai@6.41.0: {}
+  openai@6.42.0: {}
 
   path-browserify@1.0.1: {}
 
