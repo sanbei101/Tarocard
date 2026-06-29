@@ -14,7 +14,7 @@
     "lucide-vue-next": "^1.0.0",
     "openai": "^6.44.0",
     "pinia": "^3.0.4",
-    "prettier": "^3.8.4",
+    "prettier": "^3.9.1",
     "prettier-plugin-tailwindcss": "^0.8.0",
     "tailwindcss": "^4.3.1",
     "vue": "^3.5.26",
