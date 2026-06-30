@@ -16,7 +16,7 @@
     "pinia": "^3.0.4",
     "prettier": "^3.9.1",
     "prettier-plugin-tailwindcss": "^0.8.0",
-    "tailwindcss": "^4.3.1",
+    "tailwindcss": "^4.3.2",
     "vue": "^3.5.26",
     "vue-router": "^5.0.6"
   },
