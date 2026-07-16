@@ -10,7 +10,7 @@ importers:
     dependencies:
       '@tailwindcss/vite':
         specifier: ^4.3.2
-        version: 4.3.2(vite@8.1.4(esbuild@0.27.7)(jiti@2.7.0)(yaml@2.8.3))
+        version: 4.3.2(vite@8.1.5(esbuild@0.27.7)(jiti@2.7.0)(yaml@2.8.3))
       '@vueuse/core':
         specifier: ^14.3.0
         version: 14.3.0(vue@3.5.26(typescript@7.0.2))
@@ -41,7 +41,7 @@ importers:
     devDependencies:
       '@vitejs/plugin-vue':
         specifier: ^6.0.8
-        version: 6.0.8(vite@8.1.4(esbuild@0.27.7)(jiti@2.7.0)(yaml@2.8.3))(vue@3.5.26(typescript@7.0.2))
+        version: 6.0.8(vite@8.1.5(esbuild@0.27.7)(jiti@2.7.0)(yaml@2.8.3))(vue@3.5.26(typescript@7.0.2))
       '@vue/tsconfig':
         specifier: ^0.9.1
         version: 0.9.1(typescript@7.0.2)(vue@3.5.26(typescript@7.0.2))
@@ -52,14 +52,14 @@ importers:
         specifier: ~7.0.2
         version: 7.0.2
       vite:
-        specifier: ^8.1.4
-        version: 8.1.4(esbuild@0.27.7)(jiti@2.7.0)(yaml@2.8.3)
+        specifier: ^8.1.5
+        version: 8.1.5(esbuild@0.27.7)(jiti@2.7.0)(yaml@2.8.3)
       vite-plugin-compression:
         specifier: ^0.5.1
-        version: 0.5.1(vite@8.1.4(esbuild@0.27.7)(jiti@2.7.0)(yaml@2.8.3))
+        version: 0.5.1(vite@8.1.5(esbuild@0.27.7)(jiti@2.7.0)(yaml@2.8.3))
       vite-plugin-vue-devtools:
         specifier: ^8.1.5
-        version: 8.1.5(vite@8.1.4(esbuild@0.27.7)(jiti@2.7.0)(yaml@2.8.3))(vue@3.5.26(typescript@7.0.2))
+        version: 8.1.5(vite@8.1.5(esbuild@0.27.7)(jiti@2.7.0)(yaml@2.8.3))(vue@3.5.26(typescript@7.0.2))
       vue-tsc:
         specifier: ^3.3.7
         version: 3.3.7(typescript@7.0.2)
@@ -1260,8 +1260,8 @@ packages:
     peerDependencies:
       vue: ^3.0.0
 
-  nanoid@3.3.15:
-    resolution: {integrity: sha512-y7Wygv/7mEOvxTuEQDB8StXdMRBWf1kR/tlhAzBRUFkB2jfcLOAxO/SHmOO2zgz1pVgK29/kyupn059/bCHdjA==}
+  nanoid@3.3.16:
+    resolution: {integrity: sha512-bzlKTyNJ7+LdGIIwy8ijFpIqEQIvafahV7eYykJ8Cvh42EdJeODoJ6gUJXpQJvej1BddH8OqTXZNE/KfbWAu8Q==}
     engines: {node: ^10 || ^12 || ^13.7 || ^14 || >=15.0.1}
     hasBin: true
 
@@ -1338,8 +1338,8 @@ packages:
   pkg-types@2.3.0:
     resolution: {integrity: sha512-SIqCzDRg0s9npO5XQ3tNZioRY1uK06lA41ynBC1YmFTmnY6FjUjVt6s4LoADmwoig1qqD0oK8h1p/8mlMx8Oig==}
 
-  postcss@8.5.16:
-    resolution: {integrity: sha512-vuwillviilfKZsg0VGj5R/YwwcHx4SLsIOI/7K6mQkWx+l5cUHTjj5g0AasTBcyXsbfTgrwsUNmVUb5xVwyPwg==}
+  postcss@8.5.19:
+    resolution: {integrity: sha512-Mz8SaolMd8nB+G13WkORcxQKHZ/NE4xXevtkJHVuG+guo9/wYKlIMTKAqGdEmYOXR2ijPjTYNHssizdaVSUNdQ==}
     engines: {node: ^10 || ^12 || >=14}
 
   powershell-utils@0.1.0:
@@ -1547,8 +1547,8 @@ packages:
     peerDependencies:
       vite: ^3.0.0 || ^4.0.0 || ^5.0.0 || ^6.0.0 || ^7.0.0 || ^8.0.0
 
-  vite@8.1.4:
-    resolution: {integrity: sha512-bTT9PsdWO+MQMNG9ZXIP/qM9wGh37DFxTV/sPq9cFpHr3w4jkgef032PkAL9jAqhk3Nz8NQw3O8n6/xFkqO4QQ==}
+  vite@8.1.5:
+    resolution: {integrity: sha512-7ULLwsCdYx/nRyrpiEwvqb5TFHrMVZyBt+rg/OAXT7rgj/z+DtTDyKFeLAdDkubDVDKD8jOsndmy7m55XcfUsw==}
     engines: {node: ^20.19.0 || >=22.12.0}
     hasBin: true
     peerDependencies:
@@ -2113,12 +2113,12 @@ snapshots:
       '@tailwindcss/oxide-win32-arm64-msvc': 4.3.2
       '@tailwindcss/oxide-win32-x64-msvc': 4.3.2
 
-  '@tailwindcss/vite@4.3.2(vite@8.1.4(esbuild@0.27.7)(jiti@2.7.0)(yaml@2.8.3))':
+  '@tailwindcss/vite@4.3.2(vite@8.1.5(esbuild@0.27.7)(jiti@2.7.0)(yaml@2.8.3))':
     dependencies:
       '@tailwindcss/node': 4.3.2
       '@tailwindcss/oxide': 4.3.2
       tailwindcss: 4.3.2
-      vite: 8.1.4(esbuild@0.27.7)(jiti@2.7.0)(yaml@2.8.3)
+      vite: 8.1.5(esbuild@0.27.7)(jiti@2.7.0)(yaml@2.8.3)
 
   '@tybys/wasm-util@0.10.3':
     dependencies:
@@ -2193,10 +2193,10 @@ snapshots:
   '@typescript/typescript-win32-x64@7.0.2':
     optional: true
 
-  '@vitejs/plugin-vue@6.0.8(vite@8.1.4(esbuild@0.27.7)(jiti@2.7.0)(yaml@2.8.3))(vue@3.5.26(typescript@7.0.2))':
+  '@vitejs/plugin-vue@6.0.8(vite@8.1.5(esbuild@0.27.7)(jiti@2.7.0)(yaml@2.8.3))(vue@3.5.26(typescript@7.0.2))':
     dependencies:
       '@rolldown/pluginutils': 1.0.1
-      vite: 8.1.4(esbuild@0.27.7)(jiti@2.7.0)(yaml@2.8.3)
+      vite: 8.1.5(esbuild@0.27.7)(jiti@2.7.0)(yaml@2.8.3)
       vue: 3.5.26(typescript@7.0.2)
 
   '@volar/language-core@2.4.28':
@@ -2298,7 +2298,7 @@ snapshots:
       '@vue/shared': 3.5.26
       estree-walker: 2.0.2
       magic-string: 0.30.21
-      postcss: 8.5.16
+      postcss: 8.5.19
       source-map-js: 1.2.1
 
   '@vue/compiler-sfc@3.5.33':
@@ -2310,7 +2310,7 @@ snapshots:
       '@vue/shared': 3.5.33
       estree-walker: 2.0.2
       magic-string: 0.30.21
-      postcss: 8.5.16
+      postcss: 8.5.19
       source-map-js: 1.2.1
 
   '@vue/compiler-sfc@3.5.39':
@@ -2322,7 +2322,7 @@ snapshots:
       '@vue/shared': 3.5.39
       estree-walker: 2.0.2
       magic-string: 0.30.21
-      postcss: 8.5.16
+      postcss: 8.5.19
       source-map-js: 1.2.1
 
   '@vue/compiler-ssr@3.5.26':
@@ -2746,7 +2746,7 @@ snapshots:
       vue: 3.5.26(typescript@7.0.2)
       vueuc: 0.4.65(vue@3.5.26(typescript@7.0.2))
 
-  nanoid@3.3.15: {}
+  nanoid@3.3.16: {}
 
   node-releases@2.0.50: {}
 
@@ -2798,9 +2798,9 @@ snapshots:
       exsolve: 1.0.8
       pathe: 2.0.3
 
-  postcss@8.5.16:
+  postcss@8.5.19:
     dependencies:
-      nanoid: 3.3.15
+      nanoid: 3.3.16
       picocolors: 1.1.1
       source-map-js: 1.2.1
 
@@ -2935,26 +2935,26 @@ snapshots:
       evtd: 0.2.4
       vue: 3.5.26(typescript@7.0.2)
 
-  vite-dev-rpc@2.0.0(vite@8.1.4(esbuild@0.27.7)(jiti@2.7.0)(yaml@2.8.3)):
+  vite-dev-rpc@2.0.0(vite@8.1.5(esbuild@0.27.7)(jiti@2.7.0)(yaml@2.8.3)):
     dependencies:
       birpc: 4.0.0
-      vite: 8.1.4(esbuild@0.27.7)(jiti@2.7.0)(yaml@2.8.3)
-      vite-hot-client: 2.2.0(vite@8.1.4(esbuild@0.27.7)(jiti@2.7.0)(yaml@2.8.3))
+      vite: 8.1.5(esbuild@0.27.7)(jiti@2.7.0)(yaml@2.8.3)
+      vite-hot-client: 2.2.0(vite@8.1.5(esbuild@0.27.7)(jiti@2.7.0)(yaml@2.8.3))
 
-  vite-hot-client@2.2.0(vite@8.1.4(esbuild@0.27.7)(jiti@2.7.0)(yaml@2.8.3)):
+  vite-hot-client@2.2.0(vite@8.1.5(esbuild@0.27.7)(jiti@2.7.0)(yaml@2.8.3)):
     dependencies:
-      vite: 8.1.4(esbuild@0.27.7)(jiti@2.7.0)(yaml@2.8.3)
+      vite: 8.1.5(esbuild@0.27.7)(jiti@2.7.0)(yaml@2.8.3)
 
-  vite-plugin-compression@0.5.1(vite@8.1.4(esbuild@0.27.7)(jiti@2.7.0)(yaml@2.8.3)):
+  vite-plugin-compression@0.5.1(vite@8.1.5(esbuild@0.27.7)(jiti@2.7.0)(yaml@2.8.3)):
     dependencies:
       chalk: 4.1.2
       debug: 4.4.3
       fs-extra: 10.1.0
-      vite: 8.1.4(esbuild@0.27.7)(jiti@2.7.0)(yaml@2.8.3)
+      vite: 8.1.5(esbuild@0.27.7)(jiti@2.7.0)(yaml@2.8.3)
     transitivePeerDependencies:
       - supports-color
 
-  vite-plugin-inspect@11.4.1(vite@8.1.4(esbuild@0.27.7)(jiti@2.7.0)(yaml@2.8.3)):
+  vite-plugin-inspect@11.4.1(vite@8.1.5(esbuild@0.27.7)(jiti@2.7.0)(yaml@2.8.3)):
     dependencies:
       ansis: 4.3.1
       error-stack-parser-es: 1.0.5
@@ -2964,24 +2964,24 @@ snapshots:
       perfect-debounce: 2.1.0
       sirv: 3.0.2
       unplugin-utils: 0.3.1
-      vite: 8.1.4(esbuild@0.27.7)(jiti@2.7.0)(yaml@2.8.3)
-      vite-dev-rpc: 2.0.0(vite@8.1.4(esbuild@0.27.7)(jiti@2.7.0)(yaml@2.8.3))
+      vite: 8.1.5(esbuild@0.27.7)(jiti@2.7.0)(yaml@2.8.3)
+      vite-dev-rpc: 2.0.0(vite@8.1.5(esbuild@0.27.7)(jiti@2.7.0)(yaml@2.8.3))
 
-  vite-plugin-vue-devtools@8.1.5(vite@8.1.4(esbuild@0.27.7)(jiti@2.7.0)(yaml@2.8.3))(vue@3.5.26(typescript@7.0.2)):
+  vite-plugin-vue-devtools@8.1.5(vite@8.1.5(esbuild@0.27.7)(jiti@2.7.0)(yaml@2.8.3))(vue@3.5.26(typescript@7.0.2)):
     dependencies:
       '@vue/devtools-core': 8.1.5(vue@3.5.26(typescript@7.0.2))
       '@vue/devtools-kit': 8.1.5
       '@vue/devtools-shared': 8.1.5
       sirv: 3.0.2
-      vite: 8.1.4(esbuild@0.27.7)(jiti@2.7.0)(yaml@2.8.3)
-      vite-plugin-inspect: 11.4.1(vite@8.1.4(esbuild@0.27.7)(jiti@2.7.0)(yaml@2.8.3))
-      vite-plugin-vue-inspector: 6.0.0(vite@8.1.4(esbuild@0.27.7)(jiti@2.7.0)(yaml@2.8.3))
+      vite: 8.1.5(esbuild@0.27.7)(jiti@2.7.0)(yaml@2.8.3)
+      vite-plugin-inspect: 11.4.1(vite@8.1.5(esbuild@0.27.7)(jiti@2.7.0)(yaml@2.8.3))
+      vite-plugin-vue-inspector: 6.0.0(vite@8.1.5(esbuild@0.27.7)(jiti@2.7.0)(yaml@2.8.3))
     transitivePeerDependencies:
       - '@nuxt/kit'
       - supports-color
       - vue
 
-  vite-plugin-vue-inspector@6.0.0(vite@8.1.4(esbuild@0.27.7)(jiti@2.7.0)(yaml@2.8.3)):
+  vite-plugin-vue-inspector@6.0.0(vite@8.1.5(esbuild@0.27.7)(jiti@2.7.0)(yaml@2.8.3)):
     dependencies:
       '@babel/core': 7.29.7
       '@babel/plugin-proposal-decorators': 7.29.7(@babel/core@7.29.7)
@@ -2992,15 +2992,15 @@ snapshots:
       '@vue/compiler-dom': 3.5.39
       kolorist: 1.8.0
       magic-string: 0.30.21
-      vite: 8.1.4(esbuild@0.27.7)(jiti@2.7.0)(yaml@2.8.3)
+      vite: 8.1.5(esbuild@0.27.7)(jiti@2.7.0)(yaml@2.8.3)
     transitivePeerDependencies:
       - supports-color
 
-  vite@8.1.4(esbuild@0.27.7)(jiti@2.7.0)(yaml@2.8.3):
+  vite@8.1.5(esbuild@0.27.7)(jiti@2.7.0)(yaml@2.8.3):
     dependencies:
       lightningcss: 1.32.0
       picomatch: 4.0.5
-      postcss: 8.5.16
+      postcss: 8.5.19
       rolldown: 1.1.5
       tinyglobby: 0.2.17
     optionalDependencies:
