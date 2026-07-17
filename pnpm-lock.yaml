@@ -30,8 +30,8 @@ importers:
         specifier: ^0.8.1
         version: 0.8.1(prettier@3.9.5)
       tailwindcss:
-        specifier: ^4.3.2
-        version: 4.3.2
+        specifier: ^4.3.3
+        version: 4.3.3
       vue:
         specifier: ^3.5.26
         version: 3.5.26(typescript@7.0.2)
