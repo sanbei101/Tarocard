@@ -27,7 +27,7 @@
     "typescript": "~7.0.2",
     "vite": "^8.1.5",
     "vite-plugin-compression": "^0.5.1",
-    "vite-plugin-vue-devtools": "^8.1.5",
+    "vite-plugin-vue-devtools": "^8.2.1",
     "vue-tsc": "^3.3.8"
   }
 }
