@@ -23,7 +23,7 @@
   "devDependencies": {
     "@vitejs/plugin-vue": "^6.0.8",
     "@vue/tsconfig": "^0.9.1",
-    "naive-ui": "^2.45.2",
+    "naive-ui": "^2.45.3",
     "typescript": "~7.0.2",
     "vite": "^8.2.2",
     "vite-plugin-compression": "^0.5.1",
