@@ -40,8 +40,8 @@ importers:
         version: 5.0.6(@vue/compiler-sfc@3.5.40)(pinia@3.0.4(typescript@7.0.2)(vue@3.5.26(typescript@7.0.2)))(vue@3.5.26(typescript@7.0.2))
     devDependencies:
       '@vitejs/plugin-vue':
-        specifier: ^6.0.8
-        version: 6.0.8(vite@8.3.0(esbuild@0.27.7)(jiti@2.7.0)(yaml@2.8.3))(vue@3.5.26(typescript@7.0.2))
+        specifier: ^6.0.9
+        version: 6.0.9(vite@8.3.0(esbuild@0.27.7)(jiti@2.7.0)(yaml@2.8.3))(vue@3.5.26(typescript@7.0.2))
       '@vue/tsconfig':
         specifier: ^0.9.1
         version: 0.9.1(typescript@7.0.2)(vue@3.5.26(typescript@7.0.2))
@@ -757,8 +757,8 @@ packages:
     cpu: [x64]
     os: [win32]
 
-  '@vitejs/plugin-vue@6.0.8':
-    resolution: {integrity: sha512-0ZjgOg7oO6farnNGup7yvoM/YXZV84OZxHAwtflItNa/6zzQyVb5LNxyea3FEKEX2XlagIKzrlH7wwxkKgtiew==}
+  '@vitejs/plugin-vue@6.0.9':
+    resolution: {integrity: sha512-rD/MORlhaZMlXWW0rEn4FB4wMinWC0z/D7Ye160S5+Rs1mC8ZDAdcDp4SjKfUhG5t8q1ktcPVw4xuTkPRlzrSA==}
     engines: {node: ^20.19.0 || >=22.12.0}
     peerDependencies:
       vite: ^5.0.0 || ^6.0.0 || ^7.0.0 || ^8.0.0
@@ -772,6 +772,11 @@ packages:
 
   '@volar/typescript@2.4.28':
     resolution: {integrity: sha512-Ja6yvWrbis2QtN4ClAKreeUZPVYMARDYZl9LMEv1iQ1QdepB6wn0jTRxA9MftYmYa4DQ4k/DaSZpFPUfxl8giw==}
+    peerDependencies:
+      typescript: '*'
+    peerDependenciesMeta:
+      typescript:
+        optional: true
 
   '@vue-macros/common@3.1.2':
     resolution: {integrity: sha512-h9t4ArDdniO9ekYHAD95t9AZcAbb19lEGK+26iAjUODOIJKmObDNBSe4+6ELQAA3vtYiFPPBtHh7+cQCKi3Dng==}
@@ -1639,6 +1644,7 @@ packages:
     engines: {node: '>=v14.21.3'}
     peerDependencies:
       vite: ^6.0.0 || ^7.0.0 || ^8.0.0
+      vue: '*'
 
   vite-plugin-vue-inspector@6.0.0:
     resolution: {integrity: sha512-OpyITJLgZNibxlrik1EmRtvXHDjLRxNPsWkGFTERZs2LgMEdG4W0WoFt5GIgp3a3jRou+eJR8U1zOBk/XQgEbw==}
@@ -2268,7 +2274,7 @@ snapshots:
   '@typescript/typescript-win32-x64@7.0.2':
     optional: true
 
-  '@vitejs/plugin-vue@6.0.8(vite@8.3.0(esbuild@0.27.7)(jiti@2.7.0)(yaml@2.8.3))(vue@3.5.26(typescript@7.0.2))':
+  '@vitejs/plugin-vue@6.0.9(vite@8.3.0(esbuild@0.27.7)(jiti@2.7.0)(yaml@2.8.3))(vue@3.5.26(typescript@7.0.2))':
     dependencies:
       '@rolldown/pluginutils': 1.0.1
       vite: 8.3.0(esbuild@0.27.7)(jiti@2.7.0)(yaml@2.8.3)
@@ -2280,11 +2286,13 @@ snapshots:
 
   '@volar/source-map@2.4.28': {}
 
-  '@volar/typescript@2.4.28':
+  '@volar/typescript@2.4.28(typescript@7.0.2)':
     dependencies:
       '@volar/language-core': 2.4.28
       path-browserify: 1.0.1
       vscode-uri: 3.1.0
+    optionalDependencies:
+      typescript: 7.0.2
 
   '@vue-macros/common@3.1.2(vue@3.5.26(typescript@7.0.2))':
     dependencies:
@@ -3121,10 +3129,10 @@ snapshots:
       vite: 8.3.0(esbuild@0.27.7)(jiti@2.7.0)(yaml@2.8.3)
       vite-plugin-inspect: 11.4.1(vite@8.3.0(esbuild@0.27.7)(jiti@2.7.0)(yaml@2.8.3))
       vite-plugin-vue-inspector: 6.0.0(supports-color@7.2.0)(vite@8.3.0(esbuild@0.27.7)(jiti@2.7.0)(yaml@2.8.3))
+      vue: 3.5.26(typescript@7.0.2)
     transitivePeerDependencies:
       - '@nuxt/kit'
       - supports-color
-      - vue
 
   vite-plugin-vue-inspector@6.0.0(supports-color@7.2.0)(vite@8.3.0(esbuild@0.27.7)(jiti@2.7.0)(yaml@2.8.3)):
     dependencies:
@@ -3187,7 +3195,7 @@ snapshots:
 
   vue-tsc@3.3.11(typescript@7.0.2):
     dependencies:
-      '@volar/typescript': 2.4.28
+      '@volar/typescript': 2.4.28(typescript@7.0.2)
       '@vue/language-core': 3.3.11
       typescript: 7.0.2
 
