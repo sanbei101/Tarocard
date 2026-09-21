@@ -24,11 +24,11 @@ importers:
         specifier: ^3.0.4
         version: 3.0.4(typescript@7.0.2)(vue@3.5.26(typescript@7.0.2))
       prettier:
-        specifier: ^3.9.6
-        version: 3.9.6
+        specifier: ^3.9.8
+        version: 3.9.8
       prettier-plugin-tailwindcss:
         specifier: ^0.8.1
-        version: 0.8.1(prettier@3.9.6)
+        version: 0.8.1(prettier@3.9.8)
       tailwindcss:
         specifier: ^4.3.3
         version: 4.3.3
@@ -1503,8 +1503,8 @@ packages:
       prettier-plugin-svelte:
         optional: true
 
-  prettier@3.9.6:
-    resolution: {integrity: sha512-OpN0zzVdiaiAhxpuuj5efpIS4sY9j7bY6uR5mnj5yPzGkdkjNKSJeUThPb60Jw29QuAZgA4o+/iB49kFiaBX6g==}
+  prettier@3.9.8:
+    resolution: {integrity: sha512-WRFq3Wn3WId7LLROfMLdH7xaFr2jR62wU8nLO6rQUOLOxNZUviyJQs1M0iIhLexSFy+L+w0ch66wtoO2jRjG0A==}
     engines: {node: '>=14'}
     hasBin: true
 
@@ -2957,11 +2957,11 @@ snapshots:
 
   powershell-utils@0.1.0: {}
 
-  prettier-plugin-tailwindcss@0.8.1(prettier@3.9.6):
+  prettier-plugin-tailwindcss@0.8.1(prettier@3.9.8):
     dependencies:
-      prettier: 3.9.6
+      prettier: 3.9.8
 
-  prettier@3.9.6: {}
+  prettier@3.9.8: {}
 
   quansync@0.2.11: {}
 
