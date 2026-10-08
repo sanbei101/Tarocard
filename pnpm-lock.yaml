@@ -18,8 +18,8 @@ importers:
         specifier: ^1.0.0
         version: 1.0.0(vue@3.5.26(typescript@7.0.2))
       openai:
-        specifier: ^7.27.0
-        version: 7.27.0
+        specifier: ^7.28.0
+        version: 7.28.0
       pinia:
         specifier: ^3.0.4
         version: 3.0.4(typescript@7.0.2)(vue@3.5.26(typescript@7.0.2))
@@ -1377,8 +1377,8 @@ packages:
     resolution: {integrity: sha512-smsWv2LzFjP03xmvFoJ331ss6h+jixfA4UUV/Bsiyuu4YJPfN+FIQGOIiv4w9/+MoHkfkJ22UIaQWRVFRfH6Vw==}
     engines: {node: '>=20'}
 
-  openai@7.27.0:
-    resolution: {integrity: sha512-QDo1FvnRDZn15YwGVOhT9vpyypDiLphkd/7a4mcURWf5upMoEetgA6o4DJeII+ZZkC6m6DvlilCwii3+ynDcTw==}
+  openai@7.28.0:
+    resolution: {integrity: sha512-HSY4fFLflQGYe2kvO0atm6/GzhD61gpyiOZZUvO4nptMUhuB1to2K3wwFpFqc5gfEK0SxyIIFiu1yE2MtygWcA==}
     engines: {node: '>=22.0.0'}
     peerDependencies:
       '@aws-sdk/credential-provider-node': '>=3.972.0 <4'
@@ -2911,7 +2911,7 @@ snapshots:
       powershell-utils: 0.1.0
       wsl-utils: 0.3.1
 
-  openai@7.27.0: {}
+  openai@7.28.0: {}
 
   path-browserify@1.0.1: {}
 
