@@ -40,8 +40,8 @@ importers:
         version: 5.0.6(@vue/compiler-sfc@3.5.40)(pinia@3.0.4(typescript@7.0.2)(vue@3.5.26(typescript@7.0.2)))(vue@3.5.26(typescript@7.0.2))
     devDependencies:
       '@vitejs/plugin-vue':
-        specifier: ^6.0.9
-        version: 6.0.9(vite@8.3.4(esbuild@0.27.7)(jiti@2.7.0)(yaml@2.8.3))(vue@3.5.26(typescript@7.0.2))
+        specifier: ^6.0.10
+        version: 6.0.10(vite@8.3.4(esbuild@0.27.7)(jiti@2.7.0)(yaml@2.8.3))(vue@3.5.26(typescript@7.0.2))
       '@vue/tsconfig':
         specifier: ^0.9.1
         version: 0.9.1(typescript@7.0.2)(vue@3.5.26(typescript@7.0.2))
@@ -757,12 +757,12 @@ packages:
     cpu: [x64]
     os: [win32]
 
-  '@vitejs/plugin-vue@6.0.9':
-    resolution: {integrity: sha512-rD/MORlhaZMlXWW0rEn4FB4wMinWC0z/D7Ye160S5+Rs1mC8ZDAdcDp4SjKfUhG5t8q1ktcPVw4xuTkPRlzrSA==}
+  '@vitejs/plugin-vue@6.0.10':
+    resolution: {integrity: sha512-b80aUQh3n+qEzzZm5oQp3rT2QImeCx58K6eFl/RkJ3d65KW0kTuv5lNsLRVAjbW9YRUpo/wzmvzMgV34bTAItA==}
     engines: {node: ^20.19.0 || >=22.12.0}
     peerDependencies:
       vite: ^5.0.0 || ^6.0.0 || ^7.0.0 || ^8.0.0
-      vue: ^3.2.25
+      vue: ^3.2.25 || ^3.6.0-rc.10
 
   '@volar/language-core@2.4.28':
     resolution: {integrity: sha512-w4qhIJ8ZSitgLAkVay6AbcnC7gP3glYM3fYwKV3srj8m494E3xtrCv6E+bWviiK/8hs6e6t1ij1s2Endql7vzQ==}
@@ -2277,7 +2277,7 @@ snapshots:
   '@typescript/typescript-win32-x64@7.0.2':
     optional: true
 
-  '@vitejs/plugin-vue@6.0.9(vite@8.3.4(esbuild@0.27.7)(jiti@2.7.0)(yaml@2.8.3))(vue@3.5.26(typescript@7.0.2))':
+  '@vitejs/plugin-vue@6.0.10(vite@8.3.4(esbuild@0.27.7)(jiti@2.7.0)(yaml@2.8.3))(vue@3.5.26(typescript@7.0.2))':
     dependencies:
       '@rolldown/pluginutils': 1.0.1
       vite: 8.3.4(esbuild@0.27.7)(jiti@2.7.0)(yaml@2.8.3)
