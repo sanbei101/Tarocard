@@ -18,8 +18,8 @@ importers:
         specifier: ^1.0.0
         version: 1.0.0(vue@3.5.26(typescript@7.0.2))
       openai:
-        specifier: ^7.45.0
-        version: 7.45.0
+        specifier: ^7.45.1
+        version: 7.45.1
       pinia:
         specifier: ^3.0.4
         version: 3.0.4(typescript@7.0.2)(vue@3.5.26(typescript@7.0.2))
@@ -1382,14 +1382,14 @@ packages:
     resolution: {integrity: sha512-smsWv2LzFjP03xmvFoJ331ss6h+jixfA4UUV/Bsiyuu4YJPfN+FIQGOIiv4w9/+MoHkfkJ22UIaQWRVFRfH6Vw==}
     engines: {node: '>=20'}
 
-  openai@7.45.0:
-    resolution: {integrity: sha512-krAWw8RRzV5OGGjD9JR3QKDEB+DU5k4YIOyHfdJaNAU9qkV2W1OvGszk9+bxQo9kZ8+//1gEDflgXVFpMH7Lrg==}
+  openai@7.45.1:
+    resolution: {integrity: sha512-mutrJXwhJIMZ24Lab2COFtNp44OcpZSnV4O2O7q38wAHUa2m2fQqUO5pj1XS3PqLfOTeODBUS9YoadqDnnGk5A==}
     engines: {node: '>=22.0.0'}
     peerDependencies:
       '@aws-sdk/credential-provider-node': '>=3.972.0 <4'
       '@smithy/hash-node': '>=4.3.0 <5'
       '@smithy/signature-v4': '>=5.4.0 <6'
-      google-auth-library: '>=9.15.1 <11'
+      google-auth-library: '>=9.15.1 <12'
       undici: '>=5 <9'
       ws: ^8.21.0
       zod: ^3.25 || ^4.0
@@ -2925,7 +2925,7 @@ snapshots:
       powershell-utils: 0.1.0
       wsl-utils: 0.3.1
 
-  openai@7.45.0: {}
+  openai@7.45.1: {}
 
   path-browserify@1.0.1: {}
 
