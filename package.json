@@ -9,7 +9,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@tailwindcss/vite": "^4.3.3",
+    "@tailwindcss/vite": "^4.3.4",
     "@vueuse/core": "^15.0.0",
     "lucide-vue-next": "^1.0.0",
     "openai": "^7.47.0",
